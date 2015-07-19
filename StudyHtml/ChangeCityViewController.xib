@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangeCityViewController">
+            <connections>
+                <outlet property="coverView" destination="QHx-O0-do4" id="w2u-Wn-Y0r"/>
+                <outlet property="searchBar" destination="HL2-kU-X50" id="lQd-VT-iuR"/>
+                <outlet property="view" destination="iN0-l3-epB" id="V6u-c0-cqS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="D8R-5a-Qpp">
+                    <rect key="frame" x="0.0" y="49" width="600" height="551"/>
+                    <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="nz8-Db-eFN"/>
+                        <outlet property="delegate" destination="-1" id="rDI-9I-Hbe"/>
+                    </connections>
+                </tableView>
+                <view hidden="YES" alpha="0.5499999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHx-O0-do4">
+                    <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="HL2-kU-X50">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="7BN-fV-tTc"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Z4m-dr-Z01"/>
+                    </connections>
+                </searchBar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="D8R-5a-Qpp" secondAttribute="bottom" id="COK-ED-sBl"/>
+                <constraint firstItem="D8R-5a-Qpp" firstAttribute="top" secondItem="HL2-kU-X50" secondAttribute="bottom" constant="5" id="MXh-Fc-Kcp"/>
+                <constraint firstItem="D8R-5a-Qpp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="P9h-bx-reB"/>
+                <constraint firstItem="HL2-kU-X50" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RRS-d6-zWP"/>
+                <constraint firstItem="QHx-O0-do4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RZq-sW-9sf"/>
+                <constraint firstAttribute="trailing" secondItem="HL2-kU-X50" secondAttribute="trailing" id="Rqs-b7-SXx"/>
+                <constraint firstItem="HL2-kU-X50" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Uxf-d9-lsn"/>
+                <constraint firstAttribute="trailing" secondItem="QHx-O0-do4" secondAttribute="trailing" id="XKv-aT-1n2"/>
+                <constraint firstAttribute="trailing" secondItem="D8R-5a-Qpp" secondAttribute="trailing" id="hLC-qi-wN3"/>
+                <constraint firstItem="QHx-O0-do4" firstAttribute="top" secondItem="HL2-kU-X50" secondAttribute="bottom" id="hvZ-T5-e79"/>
+                <constraint firstAttribute="bottom" secondItem="QHx-O0-do4" secondAttribute="bottom" id="pKc-YE-u2A"/>
+            </constraints>
+            <point key="canvasLocation" x="76" y="79"/>
+        </view>
+    </objects>
+</document>

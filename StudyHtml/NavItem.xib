@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NavItem">
+            <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.34999999999999964" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3kY-Uk-uZz">
+                    <rect key="frame" x="5" y="5" width="1" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="jLZ-QB-7Eu"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="学习" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fi-Og-FOn">
+                    <rect key="frame" x="46" y="1" width="26" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="tbL-6e-laf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简易教程" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P35-38-8dD">
+                    <rect key="frame" x="46" y="14" width="89" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="1a0-Eo-cVQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCV-f5-fF1">
+                    <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
+                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" image="icon_category_3">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="btn_changeCity_selected"/>
+                    <state key="highlighted" image="icon_category_highlighted_3"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="lCV-f5-fF1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4Vf-AJ-rqF"/>
+                <constraint firstAttribute="bottom" secondItem="3kY-Uk-uZz" secondAttribute="bottom" constant="5" id="7PM-Zu-e9E"/>
+                <constraint firstItem="lCV-f5-fF1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="EUn-de-bBg"/>
+                <constraint firstItem="3kY-Uk-uZz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="IWr-44-nBF"/>
+                <constraint firstItem="P35-38-8dD" firstAttribute="leading" secondItem="3kY-Uk-uZz" secondAttribute="trailing" constant="40" id="Kyb-k8-oIf"/>
+                <constraint firstItem="8Fi-Og-FOn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="LSX-d9-p4h"/>
+                <constraint firstAttribute="bottom" secondItem="P35-38-8dD" secondAttribute="bottom" constant="5" id="PLR-At-kgk"/>
+                <constraint firstAttribute="trailing" secondItem="lCV-f5-fF1" secondAttribute="trailing" id="SlS-2q-IZw"/>
+                <constraint firstAttribute="bottom" secondItem="lCV-f5-fF1" secondAttribute="bottom" id="TmK-T2-3rd"/>
+                <constraint firstItem="3kY-Uk-uZz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="Udy-WE-eWI"/>
+                <constraint firstItem="8Fi-Og-FOn" firstAttribute="leading" secondItem="3kY-Uk-uZz" secondAttribute="trailing" constant="40" id="Zgh-Va-Jc5"/>
+                <constraint firstAttribute="trailing" secondItem="P35-38-8dD" secondAttribute="trailing" constant="5" id="q9e-Zy-hBx"/>
+                <constraint firstAttribute="trailing" secondItem="8Fi-Og-FOn" secondAttribute="trailing" constant="68" id="qKI-Er-peR"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bigLabel" destination="P35-38-8dD" id="Vb0-0v-mOe"/>
+                <outlet property="button" destination="lCV-f5-fF1" id="P4y-UR-NyB"/>
+                <outlet property="smallLabel" destination="8Fi-Og-FOn" id="lU5-vm-1kz"/>
+            </connections>
+            <point key="canvasLocation" x="223" y="182"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_changeCity_selected" width="30" height="30"/>
+        <image name="icon_category_3" width="30" height="30"/>
+        <image name="icon_category_highlighted_3" width="30" height="30"/>
+    </resources>
+</document>

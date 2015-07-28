@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController">
+            <connections>
+                <outlet property="setingLabel" destination="MAU-cP-VL4" id="mbs-mF-UUS"/>
+                <outlet property="smallLabel" destination="fHX-qQ-wPU" id="1xc-WT-nWt"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="Setting">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="540"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHX-qQ-wPU">
+                    <rect key="frame" x="53" y="325" width="300" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="HV7-h5-4uc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" alpha="0.84999999999999987" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAU-cP-VL4">
+                    <rect key="frame" x="53" y="5" width="300" height="300"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="RwG-kE-TSR"/>
+                        <constraint firstAttribute="width" constant="300" id="hfE-mN-Cl7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="fHX-qQ-wPU" secondAttribute="centerX" id="3Q1-gz-HNR"/>
+                <constraint firstItem="MAU-cP-VL4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="Lpg-Xe-UHU"/>
+                <constraint firstItem="MAU-cP-VL4" firstAttribute="width" secondItem="fHX-qQ-wPU" secondAttribute="width" id="MIt-8o-fPf"/>
+                <constraint firstItem="fHX-qQ-wPU" firstAttribute="top" secondItem="MAU-cP-VL4" secondAttribute="bottom" constant="20" id="Uhq-Jm-egc"/>
+                <constraint firstAttribute="centerX" secondItem="MAU-cP-VL4" secondAttribute="centerX" id="ge4-pG-uzQ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="302" y="313"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,1838 @@
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Movable Type  5.2.2">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.ruanyifeng.com/blog/styles.css" type="text/css">
+<link rel="start" href="http://www.ruanyifeng.com/blog/" title="Home">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://feeds.feedburner.com/ruanyifeng">
+<script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="http://www.ruanyifeng.com/blog/mt.js"></script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://www.ruanyifeng.com/blog/2012/07/micropayment_result.html">
+<dc:title>小额支付试验的结果</dc:title>
+<dc:description>去年5月，Google关闭了我的Adsense广告账户。...</dc:description>
+<dc:creator>阮一峰</dc:creator>
+<dc:date>2012-07-31T10:47:12+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nc-nd/3.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nc-nd/3.0/">
+</License>
+</rdf:RDF>
+-->
+
+
+    
+    <link rel="prev" href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html" title="SSL/TLS协议运行机制的概述">
+    <link rel="next" href="http://www.ruanyifeng.com/blog/2014/03/server_setup.html" title="Linux服务器的初步配置流程">
+    
+    <title>CSS动画简介 - 阮一峰的网络日志</title>
+<script src="http://static.bshare.cn/b/components/bsStatic.js?v=20150716" type="text/javascript" charset="utf-8"></script><script src="http://static.bshare.cn/b/engines/bs-engine.js?v=20150716" type="text/javascript" charset="utf-8"></script><style type="text/css">a.bshareDiv,#bsPanel,#bsMorePanel,#bshareF{border:none;background:none;padding:0;margin:0;font:12px Helvetica,Calibri,Tahoma,Arial,宋体,sans-serif;line-height:14px;}#bsPanel div,#bsMorePanel div,#bshareF div{display:block;}.bsRlogo .bsPopupAwd,.bsRlogoSel .bsPopupAwd,.bsLogo .bsPopupAwd,.bsLogoSel .bsPopupAwd{line-height:16px !important;}a.bshareDiv div,#bsFloatTab div{*display:inline;zoom:1;display:inline-block;}a.bshareDiv img,a.bshareDiv div,a.bshareDiv span,a.bshareDiv a,#bshareF table,#bshareF tr,#bshareF td{text-decoration:none;background:none;margin:0;padding:0;border:none;line-height:1.2}a.bshareDiv span{display:inline;float:none;}div.buzzButton{cursor:pointer;font-weight:bold;}.buzzButton .shareCount a{color:#333}.bsStyle1 .shareCount a{color:#fff}span.bshareText{white-space:nowrap;}span.bshareText:hover{text-decoration:underline;}a.bshareDiv .bsPromo,div.bshare-custom .bsPromo{display:none;position:absolute;z-index:100;}a.bshareDiv .bsPromo.bsPromo1,div.bshare-custom .bsPromo.bsPromo1{width:51px;height:18px;top:-18px;left:0;line-height:16px;font-size:12px !important;font-weight:normal !important;color:#fff;text-align:center;background:url(http://static.bshare.cn/frame/images/bshare_box_sprite2.gif) no-repeat 0 -606px;}div.bshare-custom .bsPromo.bsPromo2{background:url(http://static.bshare.cn/frame/images/bshare_promo_sprite.gif) no-repeat;cursor:pointer;}</style><style type="text/css">.bsBox{display:none;z-index:100000001;font-size:12px;background:url(http://static.bshare.cn/frame/images//background-opaque-dark.gif) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}.bsClose{_overflow:hidden;cursor:pointer;position:absolute;z-index:10000000;color:#666;font-weight:bold;font-family:Helvetica,Arial;font-size:14px;line-height:20px;}.bsTop{color:#666;background:#f2f2f2;height:24px;line-height:24px;border-bottom:1px solid #e8e8e8;}.bsTop span{float:left;}.bsFrameDiv,#bsMorePanel{border:none;background:#fff;}.bsReturn{float:right;*margin-right:20px;margin-right:36px;text-align:right;cursor:pointer;line-height:24px;color:#666;opacity:0.5;}#bsReturn:hover{text-decoration:underline;opacity:1;}</style><script src="http://static.bshare.cn/b/components/bsMore.js?v=20150716" type="text/javascript" charset="utf-8"></script><script src="http://static.bshare.cn/b/styles/bshareS1.js?v=20150716" type="text/javascript" charset="utf-8"></script><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style><style type="text/css">div.bsClear{clear:both;height:0;line-height:0;overflow:hidden;font-size:0;}.bsSearchDiv{padding:5px 15px;background-color:#fafafa;}.bFind-wrapper-top{background:#fff;border-color:#ccc #aaa #aaa #ccc;border-style:solid;border-width:1px;height:16px;padding:4px;margin:0;}.bFind-wrapper-top input{padding:0 !important;border:none !important;box-shadow:none !important;line-height:16px !important;}.bFind-placeholder{background:url("http://static.bshare.cn/css/images/search-icon.gif") no-repeat;display:block;float:left;height:16px;width:16px;}.bFind{background:none;border:none;float:left;font-size:11px !important;height:16px !important;margin-left:3px;outline:none;padding:0;width:400px;}.bsPlatDiv{height:322px;background:#fff;overflow:auto;padding:0 15px;}#bsLogoList{display:block;list-style:none;overflow:hidden;margin:0;padding:0;}#bsLogoList li{float:left;display:inline-block;width:71px;text-align:center;font-size:12px;height:80px;margin:0 !important;}#bsLogoList .bsPlatIcon{cursor:pointer;display:block !important;text-align:center;}#bsLogoList .bsPlatImg{width:32px;height:32px;border:none !important;display:inline-block;}#bsLogoList .bsPlatImg:hover{-moz-border-radius:7px;-webkit-border-radius:7px;border-radius:7px;box-shadow:0 0 15px #a7a8ac;}#bsLogoList .bsPlatName{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;text-align:center;color:#333 !important;margin-top:2px;line-height:140%;*width:70px;}#bsLogoList .bsPromoM{text-align:center;}.bsFooterDiv{height:24px;line-height:24px;padding:0 15px;border-top:1px solid #e8e8e8;background:#f2f2f2;text-align:right;}a.bsLogoLink{color:#666;}.bsLogoLink:hover{text-decoration:underline;}.bsPromoM{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;}.bsNew,.bsHot,.bsRec,.bsAwd{background-position:0 -552px;width:19px;margin:5px auto 1px;line-height:16px;height:18px;font-size:12px;color:#fff;overflow:hidden;}.bsNew{background-position:0 -570px;}.bsRec{width:30px;background-position:0 -588px;}.bsAwd{background:url(http://static.bshare.cn/frame/images//promot/promote.gif) no-repeat;}</style><script src="http://bshare.optimix.asia/bshare_view?Callback=bShare.viewcb&amp;url=http%3A%2F%2Fwww.ruanyifeng.com%2Fblog%2F2014%2F02%2Fcss_transition_and_animation.html&amp;h=&amp;uuid=15e016b4-0028-44f1-a40d-a3c9d9c13c28&amp;l=17&amp;lite=1&amp;ref=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DujLxwTpaPbd5GKgp6mGWaI3Rw1NrpIHL8yIt12AdQxmoUnPpow4AEUkQkZ39QCz89t-tzslIUHplgIn1yX-FwRlmuhK-nokXaEiOzXWmv9CMLhFHFawOZKm0jh5Mcgop%26wd%3D%26eqid%3De82408f400007bbb0000000455b053cd&amp;ot=CSS动画简介 - 阮一峰的网络日志&amp;b=bs248bd2" type="text/javascript" charset="utf-8"></script><style type="text/css">a.bsSiteLink{text-decoration:none;color:#666;}a.bsSiteLink:hover{text-decoration:underline;}a.bshareDiv{overflow:hidden;height:16px;line-height:18px;font-size:14px;color:#333;padding-left:0;}a.bshareDiv:hover{text-decoration:none;}div.bsTitle{padding:0 8px;border-bottom:1px solid #e8e8e8;color:#666;background:#f2f2f2;text-align:left;}div.buzzButton{cursor:pointer;}div.bsRlogo,div.bsRlogoSel{width:68px;float:left;margin:0;padding:2px 0;}div.bsRlogo a,div.bsRlogoSel a{float:left;}div.bsLogo,div.bsLogoSel{float:left;width:111px;text-align:left;height:auto;padding:2px 4px;margin:2px 0;white-space:nowrap;overflow:hidden;}div.bsLogoSel,div.bsRlogoSel{border:1px solid #ddd;background:#f1f1f1;}div.bsLogo,div.bsRlogo{border:1px solid #fff;background:#fff;}div.bsLogo a,div.bsLogoSel a{display:block;height:16px;line-height:16px;padding:0 0 0 24px;text-decoration:none;float:left;overflow:hidden;}div.bsLogoSel a,div.bsRlogoSel a{color:#000;border:none;}div.bsLogo a,div.bsRlogo a{color:#666;border:none;}div.bsLogoLink{width:121px;overflow:hidden;background:#FFF;float:left;margin:3px 0;}#bsLogin{float:right;text-align:right;overflow:hidden;height:100%;}#bsPanel{position:absolute;z-index:100000000;font-size:12px;width:258px;background:url(http://static.bshare.cn/frame/images/background-opaque-dark.png) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}div.bsClear{clear:both;height:0;line-height:0;font-size:0;overflow:hidden;}div.bsPopupAwd{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;background-position:0 -624px;width:18px;padding-left:3px;text-align:center;float:left;margin-left: 2px;height:15px;font-size:12px;color:#fff;overflow:hidden;}div.bsRlogo .bsPopupAwd,div.bsRlogoSel .bsPopupAwd{float:left;margin:5px 0 0 -14px;}</style><style type="text/css">a.bsSiteLink{text-decoration:none;color:#666;}a.bsSiteLink:hover{text-decoration:underline;}a.bshareDiv{overflow:hidden;height:16px;line-height:18px;font-size:14px;color:#333;padding-left:0;}a.bshareDiv:hover{text-decoration:none;}div.bsTitle{padding:0 8px;border-bottom:1px solid #e8e8e8;color:#666;background:#f2f2f2;text-align:left;}div.buzzButton{cursor:pointer;}div.bsRlogo,div.bsRlogoSel{width:68px;float:left;margin:0;padding:2px 0;}div.bsRlogo a,div.bsRlogoSel a{float:left;}div.bsLogo,div.bsLogoSel{float:left;width:111px;text-align:left;height:auto;padding:2px 4px;margin:2px 0;white-space:nowrap;overflow:hidden;}div.bsLogoSel,div.bsRlogoSel{border:1px solid #ddd;background:#f1f1f1;}div.bsLogo,div.bsRlogo{border:1px solid #fff;background:#fff;}div.bsLogo a,div.bsLogoSel a{display:block;height:16px;line-height:16px;padding:0 0 0 24px;text-decoration:none;float:left;overflow:hidden;}div.bsLogoSel a,div.bsRlogoSel a{color:#000;border:none;}div.bsLogo a,div.bsRlogo a{color:#666;border:none;}div.bsLogoLink{width:121px;overflow:hidden;background:#FFF;float:left;margin:3px 0;}#bsLogin{float:right;text-align:right;overflow:hidden;height:100%;}#bsPanel{position:absolute;z-index:100000000;font-size:12px;width:258px;background:url(http://static.bshare.cn/frame/images/background-opaque-dark.png) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}div.bsClear{clear:both;height:0;line-height:0;font-size:0;overflow:hidden;}div.bsPopupAwd{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;background-position:0 -624px;width:18px;padding-left:3px;text-align:center;float:left;margin-left: 2px;height:15px;font-size:12px;color:#fff;overflow:hidden;}div.bsRlogo .bsPopupAwd,div.bsRlogoSel .bsPopupAwd{float:left;margin:5px 0 0 -14px;}</style></head>
+<body id="scrapbook" class="mt-entry-archive one-column" onload="individualArchivesOnLoad(commenter_name)" youdao="bind">
+<script>
+if (/mobile/i.test(navigator.userAgent) || /android/i.test(navigator.userAgent)) document.body.classList.add('mobile');
+</script>
+    <div id="container">
+        <div id="container-inner">
+
+            <div id="header">
+    <div id="header-inner">
+        <div id="header-content">
+
+
+            <div id="header-name">阮一峰的网络日志 <span id="site_location"> » <a href="http://www.ruanyifeng.com/blog/" accesskey="1">首页</a></span><span id="site_archive"> » <a href="http://www.ruanyifeng.com/blog/archives.html">档案</a></span>
+</div>
+
+<div id="google_search">
+<!-- SiteSearch Google -->
+<form action="http://www.ruanyifeng.com/blog/search.html" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="016304377626642577906:b_e9skaywzq">
+    <input type="hidden" name="cof" value="FORID:11">
+    <input type="hidden" name="ie" value="UTF-8">
+        <input type="text" name="q" size="20" class="searchbox" id="sbi" value="">
+        <input type="image" src="/static/themes/theme_scrapbook/images/top_search_submit.gif" class="searchbox_submit" value="" alt="搜索" name="sa">
+      </div>
+    </form>
+<!-- SiteSearch Google -->
+</div>
+<div id="feed_icon">
+<a href="/feed.html" title="订阅Feed">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAUzSURBVHjavFdbbFRVFF3nPjoz7dTWTittaW0jUDRAUqaNojyqREnEQKgfUj9MqqAmhqRt/OCD4CuY+Kckoh+aiGKC+gMJbdHoRysJ8dkhhmJLNdDKtJU+6GMK87j3Hs85d2Z6HzNtMYWb3Dn3NWftvfba+5xNYDl+e6Fkj6yqb/oDRbWq14vlPBLRKCITkxf0ROLt+hNjp1PPSRK4kA3vF1dXNRcWlyA2OQU9eos9opAkAiKxD+XkKO6t15aRWO7J/MgmAZU8MEgexgZHMX518Dh72sYMmVKShnxWuWHdHtxKIDIYTgMuDzgfmSOIQkYMpdUF8OY92Hytt4/jvkg47czzU16iQovM3QFwmNck+Yyduu7D6NA0Z6JR4THntFs9V4tWQg6Ui3s6MwKDncsFTnXKLJhDSeUK3AgPtyhccDzmVs999buRt/1Vm4i0od+hX7+MRG87jPGB/w1u8FPj9xEw7McVrnYuOCvtpjTth3J/nTg99c8LRhKhr6D3dTB5R24bXFwbMXBsyZzeoXaycEpJ95TB09AGX/NpqLVNtw8urnVzLvHjFNxiFqRy2OOHuqUVnue+ACkoWzo4O6lGzTmuHq6nPvY2m9rVqjrIK2rMEKxqyG5NPAKt+wjo0LklgfNxJkZMA3KJvqRUk3z5UFY3QH14P0h+WUY79HPvgv7VuSg4ZRGY1YgZgqXmORccF17sy2ehnf9AeO085K2HQFbtXBScj0LcpgF2cN+WV+DZ/LJQu6gD4R7oV7pBJwbSgtMvfiPoVp56DySwxm7EtkMs1WdAB7qzggsDJKQYsHucSkOudrkiCPWR/fA2nYCn8SNIK4NptSMyAu3sAdDRkIsJdfth0LzSrODUoPNZ4KI9SxJI5UHk7D4GdQfz2us31c7CoHMjRkKuDPHseCMrONVhNcDJwMJpKFVvg9L4OaTiNWm1x789KCqkrXhVBiEz0WYCT2nAzQAD1/vaETv1GrRfP4Vx5cfMNcDPwvP0h0DhanPym7OIf/+O67vcJ1/PCJ4KgdzaUP6Wz+dU+5yIL6fV+PsHGAOdwlPpvvUOyeeAVGyCdqkDNB6DPjsBSrnndfOGevOh3RhGItxvA+fX1CtbGFhgYUFkFMZPR6F1HnClHq8HyubWtJexX06CRmdt33hrd7nA7SFY4qoGpnYuOKcRykPPgDCBcsHx9Iv+fNL2PueBehCWUfYQIIMGLOCcOmXDXsh1+yCt35tUPfvzGFuSvzvoinXOxqa02qOhM6733nVP2MAdaej2XN11DPKjLZCD+yBvahGCo7JfTKAN9UD7s8Oe9zUNIhz8fWI8DG2k38WCFdxugANcXrvTVd1IEbuv3Jour7Hzn7jLMBNfKs7R3i67gRVrbeCOEDhinmWhAatsqdquM2XzHZINhK2cqTjHr/XZdVJUbgN3MWAVXKbSyg9jesRW2xP9di+lwrL5ojM3m2H/kG9hwcIA37c71W6wJdW2J2S5nrjYbq/t1AHAhJsKQeyfPvf6IMJgghPJhFZ4x0KlfLFvt22du45Au/A1SOlGc0P672XXwhLtOcM0kTTEMMd0qkVmMNXxMd/tsedUjInr4SQDgOfeXMSiN0FCL5WHah4L1qqYXPJOJlttd+a5M+YpcG5poLYKQ5f+6JJ4r8bbJYP47hq4r7QAs9PjYNhHJd4o8l5taiwuOpa7AS4XKqI/5NjJbTnaWK92nLdLuhQAJayRNMiygXPBeQN+Qbvu0zDc3y+aUzhbkGR73sI7ljvUnndx2q3t+X8CDAD66FtrIL864AAAAABJRU5ErkJggg==" alt="" style="border: 0pt none;">
+</a></div>
+
+        </div>
+    </div>
+</div>
+
+
+
+            <div id="content">
+                <div id="content-inner">
+
+
+                    <div id="alpha">
+                        <div id="alpha-inner">
+
+
+                            <div id="entry-1800" class="entry-asset asset hentry">
+                                <div class="asset-header">
+<div class="asset-nav entry-nav">
+
+<div class="entry-location">
+<ul>
+<li>上一篇：<a href="http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html" title="SSL/TLS协议运行机制的概述">SSL/TLS协议运行</a></li>
+<li>下一篇：<a href="http://www.ruanyifeng.com/blog/2014/03/server_setup.html" title="Linux服务器的初步配置流程">Linux服务器的初步</a></li>
+</ul>
+</div>
+
+
+    
+                                    <div class="entry-categories">
+                                        <p>分类<span class="delimiter">：</span></p>
+                                        <ul>
+                                            <li><a href="http://www.ruanyifeng.com/blog/developer/" rel="tag">开发者手册</a></li>
+                                        </ul>
+                                    </div>
+    
+
+
+                                            
+</div>
+                                </div>
+<article class="hentry">
+                                    <h1 id="page-title" class="asset-name entry-title">CSS动画简介</h1>
+                                            <div id="share_button" style="float:right;padding-right:2em;padding-top:1em;"><a class="bshareDiv" href="http://www.bshare.cn/share" style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height:21px;color:#333;;background:transparent url(http://static.bshare.cn/frame/images/button_custom10-zh-Orange.gif) no-repeat;text-align:center;width:51px;"></div><div style="clear:both;"></div></a><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#uuid=15e016b4-0028-44f1-a40d-a3c9d9c13c28&amp;style=10&amp;bgcolor=#fff&amp;bp=facebook,twitter,sinaminiblog,gplus,qqmb,qzone,sohuminiblog,neteasemb,douban,feixin,renren,kaixin001,qqim,fanfou,instapaper&amp;ssc=false"></script>                                       
+<script type="text/javascript" charset="utf-8">
+bShare.addEntry({
+    title: document.getElementById("page-title").innerHTML,
+url:window.location.href
+});
+</script></div>
+                                    <div class="asset-meta">
+                                        
+
+                                            <p class="vcard author">作者： <a class="fn url" href="http://www.ruanyifeng.com">阮一峰</a></p>
+                                    <p>日期： <a href="http://www.ruanyifeng.com/blog/2014/02/"><abbr class="published" title="2014-02-14T16:45:39+08:00">2014年2月14日</abbr></a></p>
+
+
+                                    </div>
+                                
+                                <div class="asset-content entry-content" id="main-content">
+
+                                    <!-- div class="asset-body" -->
+                                        <p>现在，我很少写介绍CSS的文章，因为感觉网站开发的关键还是在服务器端。</p>
+
+                                    <!-- /div -->
+
+
+                                    <!-- div id="more" class="asset-more" -->
+                                        <p>但是，CSS动画除外，它实在太有用了。</p>
+
+<p><img src="http://image.beekka.com/blog/201402/bg2014021402.png" alt="" title=""></p>
+
+<p>本文介绍CSS动画的两大组成部分：transition和animation。我不打算给出每一条属性的详尽介绍，那样可以写一本书。这篇文章只是一个简介，帮助初学者了解全貌，同时又是一个快速指南，当你想不起某一个用法的时候，能够快速地找到提示。</p>
+
+<p>我的主要参考资料是，2013年10月，<a href="http://lea.verou.me/" target="_blank">Lea Verou</a>在JSConf.Asia上面的演讲<a href="http://2013.jsconf.asia/blog/2013/10/31/jsconfasia-2013-lea-verou-css-in-the-4th-dimension-not-your-daddys-css-animations" target="_blank">《CSS in the 4th Dimension》</a>。那是一个非常棒的演讲，有<a href="https://www.youtube.com/watch?v=NTJUFQmHbvc" target="_blank">视频</a>和<a href="http://lea.verou.me/css-4d/" target="_blank">幻灯片</a>，强烈推荐。</p>
+
+<h2>第一部分：CSS Transition</h2>
+
+<h3>1.1 基本用法</h3>
+
+<p>在CSS 3引入Transition（过渡）这个概念之前，CSS是没有时间轴的。也就是说，所有的状态变化，都是即时完成。</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/ruanyf/XfG4Y/1/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>上面是一个演示，当鼠标放置于缩略图之上，缩略图会迅速变大。注意，缩略图的变大是瞬间实现的。下面是代码，相当简单。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">img</span><span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span>15px<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span>15px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">img:hover</span><span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 450px<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 450px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>transition的作用在于，指定状态变化所需要的时间。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">img</span><span class="token punctuation">{</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> 1s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>上面代码指定，图片放大的过程需要1秒，效果如下。</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/ruanyf/mWaM7/3/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>我们还可以指定transition适用的属性，比如只适用于height。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">img</span><span class="token punctuation">{</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> 1s height<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>这样一来，只有height的变化需要1秒实现，其他变化（主要是width）依然瞬间实现，效果如下。</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/ruanyf/mWaM7/2/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h3>1.2 transition-delay</h3>
+
+<p>在同一行transition语句中，可以分别指定多个属性。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">img</span><span class="token punctuation">{</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> 1s height, 1s width<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>但是，这样一来，height和width的变化是同时进行的，跟不指定它们没有差别，效果如下。</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/ruanyf/mWaM7/4/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>我们希望，让height先发生变化，等结束以后，再让width发生变化。实现这一点很容易，就是为width指定一个delay参数。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">img</span><span class="token punctuation">{</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> 1s height, 1s 1s width<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>上面代码指定，width在1秒之后，再开始变化，也就是延迟（delay）1秒，效果如下。</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/ruanyf/mWaM7/5/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>delay的真正意义在于，它指定了动画发生的顺序，使得多个不同的transition可以连在一起，形成复杂效果。</p>
+
+<h3>1.3 transition-timing-function</h3>
+
+<p>transition的状态变化速度（又称timing function），默认不是匀速的，而是逐渐放慢，这叫做ease。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">img</span><span class="token punctuation">{</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> 1s ease<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>除了ease以外，其他模式还包括</p>
+
+<blockquote>
+  <p>（1）linear：匀速</p>
+
+<p>（2）ease-in：加速</p>
+
+<p>（3）ease-out：减速</p>
+
+<p>（4）cubic-bezier函数：自定义速度模式</p>
+</blockquote>
+
+<p>最后那个cubic-bezier，可以使用<a href="http://cubic-bezier.com" target="_blank">工具网站</a>来定制。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">img</span><span class="token punctuation">{</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> 1s height cubic-bezier(.83,.97,.05,1.44)<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>上面的代码会产生一个最后阶段放大过度、然后回缩的效果。</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/ruanyf/mWaM7/7/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h3>1.4 transition的各项属性</h3>
+
+<p>transition的完整写法如下。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">img</span><span class="token punctuation">{</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> 1s 1s height ease<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>这其实是一个简写形式，可以单独定义成各个属性。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">img</span><span class="token punctuation">{</span>
+    <span class="token property">transition-property</span><span class="token punctuation">:</span> height<span class="token punctuation">;</span>
+    <span class="token property">transition-duration</span><span class="token punctuation">:</span> 1s<span class="token punctuation">;</span>
+    <span class="token property">transition-delay</span><span class="token punctuation">:</span> 1s<span class="token punctuation">;</span>
+    <span class="token property">transition-timing-function</span><span class="token punctuation">:</span> ease<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<h3>1.5 transition的使用注意</h3>
+
+<p>（1）目前，各大浏览器（包括IE 10）都已经支持无前缀的transition，所以transition已经可以很安全地不加浏览器前缀。</p>
+
+<p>（2）不是所有的CSS属性都支持transition，完整的列表查看<a href="http://oli.jp/2010/css-animatable-properties/" target="_blank">这里</a>，以及具体的<a href="http://leaverou.github.io/animatable/" target="_blank">效果</a>。</p>
+
+<p>（3）transition需要明确知道，开始状态和结束状态的具体数值，才能计算出中间状态。比如，height从0px变化到100px，transition可以算出中间状态。但是，transition没法算出0px到auto的中间状态，也就是说，如果开始或结束的设置是height: auto，那么就不会产生动画效果。类似的情况还有，display: none到block，background: url(foo.jpg)到url(bar.jpg)等等。</p>
+
+<h3>1.6 transition的局限</h3>
+
+<p>transition的优点在于简单易用，但是它有几个很大的局限。</p>
+
+<p>（1）transition需要事件触发，所以没法在网页加载时自动发生。</p>
+
+<p>（2）transition是一次性的，不能重复发生，除非一再触发。</p>
+
+<p>（3）transition只能定义开始状态和结束状态，不能定义中间状态，也就是说只有两个状态。</p>
+
+<p>（4）一条transition规则，只能定义一个属性的变化，不能涉及多个属性。</p>
+
+<p>CSS Animation就是为了解决这些问题而提出的。</p>
+
+<h2>第二部分：CSS Animation</h2>
+
+<h3>2.1 基本用法</h3>
+
+<p>首先，CSS Animation需要指定动画一个周期持续的时间，以及动画效果的名称。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">div:hover </span><span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 1s rainbow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>上面代码表示，当鼠标悬停在div元素上时，会产生名为rainbow的动画效果，持续时间为1秒。为此，我们还需要用keyframes关键字，定义rainbow效果。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token atrule">@keyframes rainbow</span> <span class="token punctuation">{</span>
+  <span class="token selector">0% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> #c00<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token selector">50% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token selector">100% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> yellowgreen<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>上面代码表示，rainbow效果一共有三个状态，分别为起始（0%）、中点（50%）和结束（100%）。如果有需要，完全可以插入更多状态。效果如下。</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/ruanyf/qcum7/3/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>默认情况下，动画只播放一次。加入infinite关键字，可以让动画无限次播放。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">div:hover </span><span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 1s rainbow infinite<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>也可以指定动画具体播放的次数，比如3次。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">div:hover </span><span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 1s rainbow 3<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>这里还有一个<a href="http://lea.verou.me/css-4d/#heart-demo" target="_blank">心脏跳动</a>的例子，可供参考。</p>
+
+<h3>2.2 animation-fill-mode</h3>
+
+<p>动画结束以后，会立即从结束状态跳回到起始状态。如果想让动画保持在结束状态，需要使用animation-fill-mode属性。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">div:hover </span><span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 1s rainbow forwards<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>forwards表示让动画停留在结束状态，效果如下。</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/ruanyf/qcum7/4/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>animation-fill-mode还可以使用下列值。</p>
+
+<blockquote>
+  <p>（1）none：默认值，回到动画没开始时的状态。</p>
+
+<p>（2）backwards：让动画回到第一帧的状态。</p>
+
+<p>（3）both: 根据animation-direction（见后）轮流应用forwards和backwards规则。</p>
+</blockquote>
+
+<h3>2.3 animation-direction</h3>
+
+<p>动画循环播放时，每次都是从结束状态跳回到起始状态，再开始播放。animation-direction属性，可以改变这种行为。</p>
+
+<p>下面看一个例子，来说明如何使用animation-direction。假定有一个动画是这样定义的。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token atrule">@keyframes rainbow</span> <span class="token punctuation">{</span>
+  <span class="token selector">0% </span><span class="token punctuation">{</span> <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token selector">100% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>默认情况是，animation-direction等于normal。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">div:hover </span><span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 1s rainbow 3 normal<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>此外，还可以等于取alternate、reverse、alternate-reverse等值。它们的含义见下图（假定动画连续播放三次）。</p>
+
+<p><img src="http://image.beekka.com/blog/201402/bg2014021401.png" alt="" title=""></p>
+
+<p>简单说，animation-direction指定了动画播放的方向，最常用的值是normal和reverse。浏览器对其他值的支持情况不佳，应该慎用。</p>
+
+<h3>2.4 animation的各项属性</h3>
+
+<p>同transition一样，animation也是一个简写形式。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">div:hover </span><span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 1s 1s rainbow linear 3 forwards normal<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>这是一个简写形式，可以分解成各个单独的属性。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">div:hover </span><span class="token punctuation">{</span>
+  <span class="token property">animation-name</span><span class="token punctuation">:</span> rainbow<span class="token punctuation">;</span>
+  <span class="token property">animation-duration</span><span class="token punctuation">:</span> 1s<span class="token punctuation">;</span>
+  <span class="token property">animation-timing-function</span><span class="token punctuation">:</span> linear<span class="token punctuation">;</span>
+  <span class="token property">animation-delay</span><span class="token punctuation">:</span> 1s<span class="token punctuation">;</span>
+    <span class="token property">animation-fill-mode</span><span class="token punctuation">:</span>forwards<span class="token punctuation">;</span>
+  <span class="token property">animation-direction</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+  <span class="token property">animation-iteration-count</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<h3>2.5 keyframes的写法</h3>
+
+<p>keyframes关键字用来定义动画的各个状态，它的写法相当自由。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token atrule">@keyframes rainbow</span> <span class="token punctuation">{</span>
+  <span class="token selector">0% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> #c00 <span class="token punctuation">}</span>
+  <span class="token selector">50% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> orange <span class="token punctuation">}</span>
+  <span class="token selector">100% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> yellowgreen <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>0%可以用from代表，100%可以用to代表，因此上面的代码等同于下面的形式。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token atrule">@keyframes rainbow</span> <span class="token punctuation">{</span>
+  <span class="token selector">from </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> #c00 <span class="token punctuation">}</span>
+  <span class="token selector">50% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> orange <span class="token punctuation">}</span>
+  <span class="token selector">to </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> yellowgreen <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>如果省略某个状态，浏览器会自动推算中间状态，所以下面都是合法的写法。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token atrule">@keyframes rainbow</span> <span class="token punctuation">{</span>
+  <span class="token selector">50% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> orange <span class="token punctuation">}</span>
+  <span class="token selector">to </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> yellowgreen <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule">@keyframes rainbow</span> <span class="token punctuation">{</span>
+  <span class="token selector">to </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> yellowgreen <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>甚至，可以把多个状态写在一行。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token atrule">@keyframes pound</span> <span class="token punctuation">{</span>
+  <span class="token selector">from，to </span><span class="token punctuation">{</span> <span class="token property">transform</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token selector">50% </span><span class="token punctuation">{</span> <span class="token property">transform</span><span class="token punctuation">:</span> scale(1.2)<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>另外一点需要注意的是，浏览器从一个状态向另一个状态过渡，是平滑过渡。steps函数可以实现分步过渡。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">div:hover </span><span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 1s rainbow infinite steps(10)<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>这里有一个非常神奇的<a href="http://dabblet.com/gist/1745856" target="_blank">例子</a>，可以看到steps函数的用处。</p>
+
+<h3>2.6 animation-play-state</h3>
+
+<p>有时，动画播放过程中，会突然停止。这时，默认行为是跳回到动画的开始状态。</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/ruanyf/8t3Le/2/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>上面动画中，如果鼠标移走，色块立刻回到动画开始状态。</p>
+
+<p>如果想让动画保持突然终止时的状态，就要使用animation-play-state属性。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">div </span><span class="token punctuation">{</span>
+    <span class="token property">animation</span><span class="token punctuation">:</span> spin 1s linear infinite<span class="token punctuation">;</span>
+    <span class="token property">animation-play-state</span><span class="token punctuation">:</span> paused<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">div:hover </span><span class="token punctuation">{</span>
+  <span class="token property">animation-play-state</span><span class="token punctuation">:</span> running<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>上面的代码指定，没有鼠标没有悬停时，动画状态是暂停；一旦悬停，动画状态改为继续播放。效果如下。</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/ruanyf/8t3Le/1/embedded/result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h3>2.7 浏览器前缀</h3>
+
+<p>目前，IE 10和Firefox（&gt;= 16）支持没有前缀的animation，而chrome不支持，所以必须使用webkit前缀。</p>
+
+<p>也就是说，实际运用中，代码必须写成下面的样子。</p>
+
+<blockquote><pre class=" language-css"><code class=" language-css">
+<span class="token selector">div:hover </span><span class="token punctuation">{</span>
+  <span class="token property">-webkit-animation</span><span class="token punctuation">:</span> 1s rainbow<span class="token punctuation">;</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 1s rainbow<span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+
+<span class="token atrule">@-webkit-keyframes rainbow</span> <span class="token punctuation">{</span>
+  <span class="token selector">0% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> #c00<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token selector">50% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token selector">100% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> yellowgreen<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule">@keyframes rainbow</span> <span class="token punctuation">{</span>
+  <span class="token selector">0% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> #c00<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token selector">50% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token selector">100% </span><span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> yellowgreen<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></blockquote>
+
+<p>（完）</p>
+
+                                    <!-- /div -->
+
+                                </div>
+    <script type="text/javascript" src="/newwindow.js"></script>
+                                <div class="asset-footer">
+
+<h3>文档信息</h3>
+<ul>
+<li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
+<li>发表日期： <abbr class="published" title="2014-02-14T16:45:39+08:00">2014年2月14日</abbr></li>
+<li>更多内容： <a href="http://www.ruanyifeng.com/blog/archives.html" target="_blank"> 档案</a>  » 
+<a href="http://www.ruanyifeng.com/blog/developer/"> 开发者手册</a> 
+</li>
+<li>购买文集：<a href="http://www.ruanyifeng.com/blog/2014/12/my-blog-book.html" target="_blank"><img src="data:image/png;base64,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" style="border:0;"> 《如何变得有思想》</a></li>
+<li>社交媒体：<a href="https://twitter.com/ruanyf" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAk1JREFUeNqsVc9rE0EU/mZ3dhPNJl2bVIk/Km09aFBE8GLvnrwJXvwLxIsgCP4Fnit6E8Gb0IMHwUsL9SSNgiAoooJIpE1Joo1h82uT7IxvxmRN3Q32kAdvdrI773vfe+/bDTu9WioDcDAda3Ja8piepQ1avCkCeny0Y+R9KenKwOmHHLvPaKn7AtVOoO8dOWDCMpg+41gMQv5FNEJACgoE8MsPNLDBhgfoutMOsJDmWLmU037C4TApciljwQ/kHoohQxV06+wMXNvE7WINuaSpvdYVKLgWnl3O4zAxU3Z1IYVGT+B5qYWV9z2kbQaT/cOwTsxOUUYF+mB5Dkmi8HG3h2q9hxsFNwRTdvQgxxnXRrMvIdkEhllis/qtiWuLDm4WZnBlPoWnXz28LHdw0uGR7m9Wu3j0qYGEubfn4UlBfXO4gTZltRNMg9w9f0i7kNFxllsBlS0x75gYfxyWTBUjT2W5CSMSPBrQuG21+hiMDS8CeCzF8eSLp13uQ3Ab1IqMFZN8tFHPmgOBF99bYP8Be1Xp6t7OJszJgKpPSiZvaj7uf2hguz2IBQuozDvFH6RDBjuK9wdQDvt0nMpW+8efGyh5UcAeZb2+UcHbnz5Jx4wdlp4yJYU3kLiQtfBwOYeLc8nIwfXtNu69q2Oz4mMxbemYOOOjKarhvq51KUjg3GwiFPIuvcNF6pnSnWK0lOEabNLgQh1aJFAhlGB9rG110B2+oyRNPc0sZbRNFltmLKDKqj4Qrm1ojzOxDz2pyPQ0P7CK4c40/wJ+CzAAGYrXsvfFXR4AAAAASUVORK5CYII=" style="border:0;"> twitter</a>，<a href="http://weibo.com/ruanyf" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4YSRudE8o9VGjUYPjGnGXOMk423GbcajJgYmISZLTepN7ppSTbmmKaY7TDtMx83MzaLN1pk1mz0x1zLnm+eb15vft2BaeFostqi2uGVJsuRaplnutrxuhVo5WaVYVVpds0atna0l1rutu6cRp7lOk06rntZnw7Dxtsm2qbcZsOXYBtuutm22fWFnYhdnt8Wuw+6TvZN9un2N/T0HDYfZDqsdWh1+c7RyFDpWOt6azpzuP33F9JbpL2dYzxDP2DPjthPLKcRpnVOb00dnF2e5c4PziIuJS4LLLpc+Lpsbxt3IveRKdPVxXeF60vWdm7Obwu2o26/uNu5p7ofcn8w0nymeWTNz0MPIQ+BR5dE/C5+VMGvfrH5PQ0+BZ7XnIy9jL5FXrdewt6V3qvdh7xc+9j5yn+M+4zw33jLeWV/MN8C3yLfLT8Nvnl+F30N/I/9k/3r/0QCngCUBZwOJgUGBWwL7+Hp8Ib+OPzrbZfay2e1BjKC5QRVBj4KtguXBrSFoyOyQrSH355jOkc5pDoVQfujW0Adh5mGLw34MJ4WHhVeGP45wiFga0TGXNXfR3ENz30T6RJZE3ptnMU85ry1KNSo+qi5qPNo3ujS6P8YuZlnM1VidWElsSxw5LiquNm5svt/87fOH4p3iC+N7F5gvyF1weaHOwvSFpxapLhIsOpZATIhOOJTwQRAqqBaMJfITdyWOCnnCHcJnIi/RNtGI2ENcKh5O8kgqTXqS7JG8NXkkxTOlLOW5hCepkLxMDUzdmzqeFpp2IG0yPTq9MYOSkZBxQqohTZO2Z+pn5mZ2y6xlhbL+xW6Lty8elQfJa7OQrAVZLQq2QqboVFoo1yoHsmdlV2a/zYnKOZarnivN7cyzytuQN5zvn//tEsIS4ZK2pYZLVy0dWOa9rGo5sjxxedsK4xUFK4ZWBqw8uIq2Km3VT6vtV5eufr0mek1rgV7ByoLBtQFr6wtVCuWFfevc1+1dT1gvWd+1YfqGnRs+FYmKrhTbF5cVf9go3HjlG4dvyr+Z3JS0qavEuWTPZtJm6ebeLZ5bDpaql+aXDm4N2dq0Dd9WtO319kXbL5fNKNu7g7ZDuaO/PLi8ZafJzs07P1SkVPRU+lQ27tLdtWHX+G7R7ht7vPY07NXbW7z3/T7JvttVAVVN1WbVZftJ+7P3P66Jqun4lvttXa1ObXHtxwPSA/0HIw6217nU1R3SPVRSj9Yr60cOxx++/p3vdy0NNg1VjZzG4iNwRHnk6fcJ3/ceDTradox7rOEH0x92HWcdL2pCmvKaRptTmvtbYlu6T8w+0dbq3nr8R9sfD5w0PFl5SvNUyWna6YLTk2fyz4ydlZ19fi753GDborZ752PO32oPb++6EHTh0kX/i+c7vDvOXPK4dPKy2+UTV7hXmq86X23qdOo8/pPTT8e7nLuarrlca7nuer21e2b36RueN87d9L158Rb/1tWeOT3dvfN6b/fF9/XfFt1+cif9zsu72Xcn7q28T7xf9EDtQdlD3YfVP1v+3Njv3H9qwHeg89HcR/cGhYPP/pH1jw9DBY+Zj8uGDYbrnjg+OTniP3L96fynQ89kzyaeF/6i/suuFxYvfvjV69fO0ZjRoZfyl5O/bXyl/erA6xmv28bCxh6+yXgzMV70VvvtwXfcdx3vo98PT+R8IH8o/2j5sfVT0Kf7kxmTk/8EA5jz/GMzLdsAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAABPZJREFUeNqMyXtM1WUcx/FnNTdreAVCEEThyEFUrM2kwkpS05qVl8rugVpRUelaJdZaWWktdZKHssImgV04osgBCbwAa2Whm6GWoXHxcD1wHiI4t9/z/H68+wO3av1R3+217/b+CFStsHq/W2V1HW+wOmq8VkeN/E+dR/7SUSOtrmOnLc93jxA6LsTw71XLrUsHsNwHsdxl/09HGVb7QawOF1bn4ZF26QDDsmqNsH7be9psKcJs+fy/tRZjXvwM//678BVdT6BsMarhxZHeug+reW+TMC84+s0LDv4tH7PZgdXqwGrLx7yYP9KaHISOvUCwYh3+4iUMOiIJVmSMbBfy+4X581Zp/ryVfzi/FfPXd1AntxNwvkvg6zfQZ7Zg/rIV8/x7qB9fJlT/JPrcm4SOPctg3ihCR5dhNu2QQjfmSt2Yi27MRf+Uiz67Ef1TLv7Ct5CPZtMzJ4N2243Ij7Kwmjdhnt+EUZeFr/BmhvYkoBqewl8yD9/eCejGTVLoUzlSn8pBn8xBn85B/fAcf7z6PJ7rl9KdNBdP6nwuJc2jL+9+jJrXGNr1On9seZHgkQ0ESq8l4EzBOLKMod1XoE6slUKfXCd1wxp0Qxb6RBYDLzxGz8xb8aSm05u2kL4bF9N902I89yzHe986PEseoGP2YjqfvpNQeTr+4rmEKucz6LgS9f1jUuiy+VIfvxvz1GoGN99Hz8wFeGan0zl3Ae4lK3A/vJb2x7PpWPEI3bevoHfJKtypt9H1UgbDZx5E//goofJF+AtmoasWSaG2jZE6P5zg9hQ8Nyyie1Y6rQ+vpafMhdHXx7BpgjWMr7sbT5kL9/IHcUck0X3LtfgLVqAP3YAumoHeHYvaPkYKlRcudf54Bh5KpjP5Fi69tplgIMCQabK/rIxtO3bgqqxkmJHzdXbRknYbrWIcrWEJ9D8RjXaMRe2ciNo5QQr1QYRUjnC8C1Nxr1pD0O/HFwyQmZmJ3W4nLS0Nm83G+vXrsSwLgP6vS2kWo/lNjKN57gTMTyJRH0Si8iZKoXZdI5Ujkt55SXRtfBuAffv2sXLlSpxOJ9nZ2SQkJBAWFobX6wVgoPooLWI0v4hxuFeFY30ahdoVhcqLkEJ9GCV1QRTehZNxZ9wPQNGXX5KZmUlbWxspKSkIIUhPT0dZFibQvSaHJjGKxujxBHZGoT+ehPpwEsoRIYUqmCR1YTTBd2NoGxtOz4Y3CPoDrNuwnuhpU7lq/HgW3LGU5l4P2h+g55XNnBOjORM/jsH3ozGLYlAFMag90ahPI6VQxZOlKo5BOyfjey+GliljaL0uA7l9D2f37uess5KBoyfwbvmIJnsajVePouXeCIKFsZglsajiyX8pvEYKoySm33DGYTjj0OVxhEri6N84kfalY2i/NRb3AhvNN0+i9Y4wPC+H4yuMxTocjzoYj7F/ymVxI/+ryH5huKaeMVzxGK54QuXT8B+y4atIZqB8Nt6SVDzFqXi+mIO39Dp+PziHwdIZDJVOJ3gogZArHsM1BcMVj1E+BcMVe1GY38auNqqnYdQkEKpOJPBNEv7DdnyVdnwVdoYqki+bge9wCv6qFAJVyQS/mU6oJhHjSCJG9VSM6kRUfXi2GK6fJYy6+CyjNrHRqLP1GbWJ0qizSfV39Tap6qdLVW+Xqt4ujfokadRdVpvgNWpt54y6qc8MV44Sfw4An+t+Gj1AKyYAAAAASUVORK5CYII=" style="border:0;"> weibo</a></li>
+<li>Feed订阅： <a href="/feed.html" target="_blank"><img src="data:image/gif;base64,R0lGODlhFAAUANU2APV1GfmrePZ8IeR5VPq2ieNkLf7p3NpFJveCJ/NoFfibVPR1IexiJfvdzuZrNfXGuOhUEueTevaFOfzIpNxDGeZZJNU6IOubifiVTfOnid1aLuZpLOFSJf/28vJtIvGcefaLSd5kNu9iFv/z6//48//t4uFfLfNkCeJNGuGNc/rCof/+/PVxEeldI/V5KeKMbu9nIvB2OvzQtNxMKfOPXP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAADYALAAAAAAUABQAAAb/QJstEjKZCsjCZsl0pIS2QWXaYsA8noVWIEAgFoNhhWNyMESi7Jbr/aZCFdRnZJAFJCwAt+vlOkwtEBk1hDUkExJ6bQJaGyYMLTQTDSOFHQF8jAseSFYiJwkuAQ2FE1xaHjBIMDAgARguJwABJIQTLJswDEgeIgSEJQQILAqVNQEiui1HHgkBhTUGCiwYtR0xLS0VJhtaEgoEBoQkGCfPNSoQY9xaCwAsCBPALgmkJA4cZN0CAAgY/PJqEIDwgVAECjM0bOAnwcAKGQJclKhRgoGDDjUeUDigkN8vQiBOfByAglSDAxw3IBCgYEU0FyJoEPpA4UGNDjMsaHDQR8EdPVYOMmQYQGHAhQgHLIRIsWAlgASsGMRBMWMGBQtYZ7yIsoBRKkhjOMxAiXJGGCEpHGxIYsSIhrcaQmy1EQQAOw==" style="border:0;"></a></li>
+
+</ul>
+                                </div>
+</article>
+                            </div>
+
+   <div id="gegz1">
+<p style="text-align:center;"><a href="http://www.v2ex.com/t/182335" target="_blank"><img src="http://www.ruanyifeng.com/blog/images/ad_meican.png" data-src="http://www.ruanyifeng.com/blog/images/ad_meican_2x.png" style="border:none;"></a></p>
+   </div>
+
+<div id="related_entries">
+<h2>相关文章</h2>
+<ul>
+
+<li><strong>2015.07.14: <a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">Flex 布局教程：实例篇</a></strong>
+
+                           <div class="entry-body">
+                              上一篇文章介绍了Flex布局的语法，今天介绍常见布局的Flex写法。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2015.07.10: <a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局教程：语法篇</a></strong>
+
+                           <div class="entry-body">
+                              网页布局（layout）是CSS的一个重点应用。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2015.04.14: <a href="http://www.ruanyifeng.com/blog/2015/04/fortune.html">fortune 命令简介</a></strong>
+
+                           <div class="entry-body">
+                              美国中餐馆的最后一道菜，往往是小甜饼，叫做"幸运饼"（fortune cookie）。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2015.03.13: <a href="http://www.ruanyifeng.com/blog/2015/03/build-website-with-make.html">使用 Make 构建网站</a></strong>
+
+                           <div class="entry-body">
+                              网站开发正变得越来越专业，涉及到各种各样的工具和流程，迫切需要构建自动化。
+
+                           </div>
+
+</li>
+
+ 
+</ul>
+</div>
+
+
+<div id="googlead1">
+<h2>广告<a href="/ads.html">（购买广告位）</a></h2>
+<div id="googlead1-inner">
+<div id="googlead1-left">
+<a href="http://dxy.com?utm_source=ruanyifeng.com" target="_blank"><img src="http://www.ruanyifeng.com/blog/images/ad_dxy.jpg" style="border:none;"></a><br>
+<a href="http://e.jikexueyuan.com/html5.html?hmsr=ruanyifeng_banner_html5_0713" target="_blank"><img src="http://www.ruanyifeng.com/blog/images/ad_jkxy.jpg" style="border:none;"></a>
+</div>
+<div id="googlead1-right">
+
+<a href="http://www.zdzdm.com/?r" target="_blank"><img src="http://www.ruanyifeng.com/blog/images/ad_zdzdm.png" style="border:none;"></a><br>
+<a href="http://www.yochat.cn/joinus/?hmsr=ruanyifeng&amp;hmmd=%E5%9B%BE%E7%89%87&amp;hmpl=%E6%8B%9B%E8%81%98&amp;hmkw=&amp;hmci=" target="_blank"><img src="http://www.ruanyifeng.com/blog/images/ad_yochat.png" style="border:none;"></a>
+
+</div>
+</div>
+</div>
+                    
+
+                    <div id="comments" class="comments">
+
+
+    
+    
+        
+    <h2 class="comments-header">留言（32条）</h2>
+
+    <div id="comments-content" class="comments-content" style="clear: left;">
+        
+        <div id="comment-300039" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">frank</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-300039">
+            <p>写的很清晰,为了成为一个full stack的工程师，后端开发也是要学学这个的。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 14, 2014  5:06 PM">2014年2月14日 17:06</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-300039">∞</a>
+ | <a href="#comment-text" title="引用frank的这条留言" onclick="return CommentQuote('comment-quote-300039','frank');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-300048" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">kejun</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-300048">
+            <p>"我不太爱写介绍CSS的文章，因为这不是网站开发的关键。" 刺痛我了。动画仅是css的一部分，高级布局等等，开发现代应用不可割裂...</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 14, 2014  5:51 PM">2014年2月14日 17:51</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-300048">∞</a>
+ | <a href="#comment-text" title="引用kejun的这条留言" onclick="return CommentQuote('comment-quote-300048','kejun');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-300050" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://oklai.name" href="http://oklai.name" target="_blank" rel="nofollow">oklai</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-300050">
+            <p>CSS的却不是网站开发的关键，它是web用户体验的关键。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 14, 2014  6:05 PM">2014年2月14日 18:05</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-300050">∞</a>
+ | <a href="#comment-text" title="引用oklai的这条留言" onclick="return CommentQuote('comment-quote-300050','oklai');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-300086" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://githun.com/gaubee/blog" href="http://githun.com/gaubee/blog" target="_blank" rel="nofollow">Gaubee</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-300086">
+            <p>背景多样性、计算布局、动画。私人认为这三点才是CSS的主题。背景方面有多背景的支持，背景本身又不能太过依赖CSS，主要是图片，所以这点算是够了。布局的话只有calc算过得去，其余新增的所谓六大布局系统我只能呵呵。动画方面由于新增的伪类加入，所以还是可以赞的，就是配置太过繁琐，新手很难把握住动画的关键，这是个重型武器。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 15, 2014 12:47 AM">2014年2月15日 00:47</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-300086">∞</a>
+ | <a href="#comment-text" title="引用Gaubee的这条留言" onclick="return CommentQuote('comment-quote-300086','Gaubee');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-300106" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.hiloong.com" href="http://www.hiloong.com" target="_blank" rel="nofollow">hiloong</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-300106">
+            <p>css3 真心强大，有些特效和动画可以用用js来做了.使用还简单</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 15, 2014  9:58 AM">2014年2月15日 09:58</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-300106">∞</a>
+ | <a href="#comment-text" title="引用hiloong的这条留言" onclick="return CommentQuote('comment-quote-300106','hiloong');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-300276" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">jack</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-300276">
+            <p>Lea Verou 是我的偶像呀,她还曾经加入过w3c</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 17, 2014  9:11 AM">2014年2月17日 09:11</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-300276">∞</a>
+ | <a href="#comment-text" title="引用jack的这条留言" onclick="return CommentQuote('comment-quote-300276','jack');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-300387" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://stormhouse.github.io/" href="http://stormhouse.github.io/" target="_blank" rel="nofollow">stormhouse</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-300387">
+            <p>一直关注着峰哥博客，博客内容无所不包，但又篇篇精品；也不只一遍的翻阅博主翻译的「黑客与画家」，坚信编程是一种艺术创作，深受编程语言进化思想，虽是java出身，但更喜欢动态语言javsscript，python。<br>
+另附上翻译的css3动画的详细教程：http://stormhouse.github.io/posts/2013/animationzhuan/</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 18, 2014  4:45 PM">2014年2月18日 16:45</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-300387">∞</a>
+ | <a href="#comment-text" title="引用stormhouse的这条留言" onclick="return CommentQuote('comment-quote-300387','stormhouse');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-300684" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://mh126.com" href="http://mh126.com" target="_blank" rel="nofollow">刘梦寒</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-300684">
+            <p>听同事介绍你的文章，今日一见，实属震撼！我的个人网站正在开始架构，希望以后可以多向你请教。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 21, 2014 10:37 PM">2014年2月21日 22:37</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-300684">∞</a>
+ | <a href="#comment-text" title="引用刘梦寒的这条留言" onclick="return CommentQuote('comment-quote-300684','刘梦寒');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-300770" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://region8848.herokuapp.com/" href="http://region8848.herokuapp.com/" target="_blank" rel="nofollow">assassinpig</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-300770">
+            <p>又一篇好文</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 22, 2014 10:13 PM">2014年2月22日 22:13</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-300770">∞</a>
+ | <a href="#comment-text" title="引用assassinpig的这条留言" onclick="return CommentQuote('comment-quote-300770','assassinpig');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-300843" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">爱国者</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-300843">
+            <blockquote>
+<pre>引用kejun的发言：</pre>
+
+<p>"我不太爱写介绍CSS的文章，因为这不是网站开发的关键。" 刺痛我了。动画仅是css的一部分，高级布局等等，开发现代应用不可割裂...</p>
+
+</blockquote>
+
+<p>前端体验越发重要</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 23, 2014 10:20 PM">2014年2月23日 22:20</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-300843">∞</a>
+ | <a href="#comment-text" title="引用爱国者的这条留言" onclick="return CommentQuote('comment-quote-300843','爱国者');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-301210" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://biqing.me" href="http://biqing.me" target="_blank" rel="nofollow">biqing</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-301210">
+            <p>1.2 transition-delay<br>
+在同一行transition语句中，可以分别指定多个属性。</p>
+
+<p>1.6 transition的局限<br>
+（4）一条transition规则，只能定义一个属性的变化，不能涉及多个属性。</p>
+
+<p>这两处是不是有点矛盾呢?</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 27, 2014 12:15 AM">2014年2月27日 00:15</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-301210">∞</a>
+ | <a href="#comment-text" title="引用biqing的这条留言" onclick="return CommentQuote('comment-quote-301210','biqing');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-301685" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">JIGI</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-301685">
+            <blockquote>
+<pre>阮一峰</pre>
+
+<p>这里有一个非常神奇的例子</p>
+
+</blockquote>
+
+<p>感觉这个例子确实停奇妙,但是css:step(30,end)里的30还是依赖文本的长度,复用性不好,感觉不太优雅...</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March  2, 2014 10:28 PM">2014年3月 2日 22:28</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-301685">∞</a>
+ | <a href="#comment-text" title="引用JIGI的这条留言" onclick="return CommentQuote('comment-quote-301685','JIGI');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-301686" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://celwk.com" href="http://celwk.com" target="_blank" rel="nofollow">心灵诊室</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-301686">
+            <blockquote>
+<pre>引用kejun的发言：</pre>
+
+<p>"我不太爱写介绍CSS的文章，因为这不是网站开发的关键。" 刺痛我了。动画仅是css的一部分，高级布局等等，开发现代应用不可割裂...</p>
+
+</blockquote>
+
+<p>鄙人也觉得不太客观啊，客户端还是挺重要的吧，一个不好看或者体验不好的网站可能很难吸引用户去深入了解你强大的后台功能，否则为什么Ajax变得那么必须了呢</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March  2, 2014 10:42 PM">2014年3月 2日 22:42</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-301686">∞</a>
+ | <a href="#comment-text" title="引用心灵诊室的这条留言" onclick="return CommentQuote('comment-quote-301686','心灵诊室');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-301779" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">程仁</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-301779">
+            <p>很不错，以后请您多发点关于技术和思想上的说说</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March  3, 2014 10:40 PM">2014年3月 3日 22:40</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-301779">∞</a>
+ | <a href="#comment-text" title="引用程仁的这条留言" onclick="return CommentQuote('comment-quote-301779','程仁');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-301990" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">LiJunLe</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-301990">
+            <p>你好，我看到一篇TDD的文章。它的英文比较难懂，不知阮大神能否翻译一下？<br>
+<a href="http://blog.testdouble.com/posts/2014-01-25-the-failures-of-intro-to-tdd.html" rel="nofollow">http://blog.testdouble.com/posts/2014-01-25-the-failures-of-intro-to-tdd.html</a></p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March  7, 2014  1:52 AM">2014年3月 7日 01:52</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-301990">∞</a>
+ | <a href="#comment-text" title="引用LiJunLe的这条留言" onclick="return CommentQuote('comment-quote-301990','LiJunLe');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-302035" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">强</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-302035">
+            <p> 这文章我看完了。有人叫你是大神，我也觉得你是大神。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March  7, 2014  4:10 PM">2014年3月 7日 16:10</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-302035">∞</a>
+ | <a href="#comment-text" title="引用强的这条留言" onclick="return CommentQuote('comment-quote-302035','强');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-302435" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://liutao.me" href="http://liutao.me" target="_blank" rel="nofollow">merlot</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-302435">
+            <p>css3配合js，可以大幅优化静态页的显示效果，我用的jekyll生成的博客，就很依赖这个。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 11, 2014  4:57 PM">2014年3月11日 16:57</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-302435">∞</a>
+ | <a href="#comment-text" title="引用merlot的这条留言" onclick="return CommentQuote('comment-quote-302435','merlot');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-303421" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://dongsh.me" href="http://dongsh.me" target="_blank" rel="nofollow">shdong</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-303421">
+            <p>阮老师的博客看着不累，受益匪浅。有时间也介绍下css3在移动平台下的使用。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 17, 2014  5:30 PM">2014年3月17日 17:30</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-303421">∞</a>
+ | <a href="#comment-text" title="引用shdong的这条留言" onclick="return CommentQuote('comment-quote-303421','shdong');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-304192" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">s</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-304192">
+            <p>“因为感觉网站开发的关键还是在服务器端”<br>
+博主又调皮了。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 23, 2014  4:22 PM">2014年3月23日 16:22</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-304192">∞</a>
+ | <a href="#comment-text" title="引用s的这条留言" onclick="return CommentQuote('comment-quote-304192','s');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-304312" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Yuki</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-304312">
+            <p>《CSS in the 4th Dimension》上写的是reverse和alternate-reverse WORSE SUPPORT :(<br>
+您写的是“最常用的值是normal和reverse。浏览器对其他值的支持情况不佳，应该慎用。”<br>
+不太一样吧<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 24, 2014  4:52 PM">2014年3月24日 16:52</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-304312">∞</a>
+ | <a href="#comment-text" title="引用Yuki的这条留言" onclick="return CommentQuote('comment-quote-304312','Yuki');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-308125" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.frontlan.com" href="http://www.frontlan.com" target="_blank" rel="nofollow">wuxiaolan91</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-308125">
+            <blockquote>
+<pre>引用心灵诊室的发言：</pre>
+
+<p></p>
+
+<p>鄙人也觉得不太客观啊，客户端还是挺重要的吧，一个不好看或者体验不好的网站可能很难吸引用户去深入了解你强大的后台功能，否则为什么Ajax变得那么必须了呢</p>
+
+</blockquote>
+赞同.
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April  4, 2014  7:11 PM">2014年4月 4日 19:11</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-308125">∞</a>
+ | <a href="#comment-text" title="引用wuxiaolan91的这条留言" onclick="return CommentQuote('comment-quote-308125','wuxiaolan91');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-317004" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Felix Hg</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-317004">
+            <p>是时候学HTML5和CSS3了，虽然一直做服务端程序</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April 22, 2014  5:25 PM">2014年4月22日 17:25</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-317004">∞</a>
+ | <a href="#comment-text" title="引用Felix Hg的这条留言" onclick="return CommentQuote('comment-quote-317004','Felix Hg');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-323072" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">liz</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-323072">
+            <p>除了那句大家都看到的激进语言，其他文字都是有含金量的，很喜欢你的博客里的某些文章，感谢分享</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 13, 2014  4:35 PM">2014年5月13日 16:35</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-323072">∞</a>
+ | <a href="#comment-text" title="引用liz的这条留言" onclick="return CommentQuote('comment-quote-323072','liz');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-323294" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.U.U" href="http://www.U.U" target="_blank" rel="nofollow">U</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-323294">
+            <p>html没有未来，未来是gopher!</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 14, 2014  3:03 PM">2014年5月14日 15:03</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-323294">∞</a>
+ | <a href="#comment-text" title="引用U的这条留言" onclick="return CommentQuote('comment-quote-323294','U');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-325719" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">luobotang</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-325719">
+            <p>“网站开发的关键还是在服务器端”<br>
+同意，不过还没有考虑好学习哪一种服务器端编程语言，当然，这是个次要的问题。<br>
+前端再怎么绚烂，也只是个架子而已，干货还是在服务器端啊。<br>
+全栈工程师，是不是就是前后端都精通的意思啊，嗯，朝着这个方向发展。<br>
+当然，或许这些都是层次太低的需求。那我希望能早日有更高层次的需求。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 29, 2014  4:28 PM">2014年5月29日 16:28</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-325719">∞</a>
+ | <a href="#comment-text" title="引用luobotang的这条留言" onclick="return CommentQuote('comment-quote-325719','luobotang');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-326149" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://暂无" href="http://暂无" target="_blank" rel="nofollow">林克</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-326149">
+            <p>好文章，在它帮助下做了一个端午节的小游戏，谢过了。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 30, 2014  5:27 PM">2014年5月30日 17:27</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-326149">∞</a>
+ | <a href="#comment-text" title="引用林克的这条留言" onclick="return CommentQuote('comment-quote-326149','林克');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-329729" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://zhenghaoju700.blog.163.com/" href="http://zhenghaoju700.blog.163.com/" target="_blank" rel="nofollow">Hurry</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-329729">
+            <p>网站开发的关键还是在服务器端，很难理解啊！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 28, 2014  7:34 AM">2014年6月28日 07:34</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-329729">∞</a>
+ | <a href="#comment-text" title="引用Hurry的这条留言" onclick="return CommentQuote('comment-quote-329729','Hurry');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-342481" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">闫志红</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-342481">
+            <p>简单来说，网站现在都是数据处理，所以后台很重要，但是对于普通客户来说，界面的友好性更重要，一个优秀的站点设计不仅仅是数据处理，所以说，现在学界面设计的人越来越重要，以前属于旧社会，只要能干活就行，现在是奢饰品，还要求好看。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  2, 2014  5:11 PM">2014年11月 2日 17:11</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-342481">∞</a>
+ | <a href="#comment-text" title="引用闫志红的这条留言" onclick="return CommentQuote('comment-quote-342481','闫志红');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-347438" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">zhang_yl</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-347438">
+            <p>程序员的未来在前端,后台的程序逐渐被封装成了成熟的实现固定逻辑的产品或模块，真正需要变化的是交互界面，是适合各种审美的界面需求。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 23, 2015  1:52 PM">2015年1月23日 13:52</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-347438">∞</a>
+ | <a href="#comment-text" title="引用zhang_yl的这条留言" onclick="return CommentQuote('comment-quote-347438','zhang_yl');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-348096" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">hawk</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-348096">
+            <p>真是一篇完整、易读又严谨的入门好教程。感谢！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 15, 2015 11:55 AM">2015年2月15日 11:55</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-348096">∞</a>
+ | <a href="#comment-text" title="引用hawk的这条留言" onclick="return CommentQuote('comment-quote-348096','hawk');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-349673" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">dsc</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-349673">
+            <p>很好很值得学习。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 15, 2015 11:17 AM">2015年5月15日 11:17</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-349673">∞</a>
+ | <a href="#comment-text" title="引用dsc的这条留言" onclick="return CommentQuote('comment-quote-349673','dsc');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-350892" class="comment">
+    <div id="comment-last" class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://武" href="http://武" target="_blank" rel="nofollow">敖武</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-350892">
+            <p>经常看，写的很好，赞一个哈。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="July 17, 2015  4:13 PM">2015年7月17日 16:13</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2014/02/css_transition_and_animation.html#comment-350892">∞</a>
+ | <a href="#comment-text" title="引用敖武的这条留言" onclick="return CommentQuote('comment-quote-350892','敖武');">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    </div>
+        
+    
+
+
+    
+    
+    <div class="comments-open" id="comments-open">
+        <h2 class="comments-open-header">我要发表看法</h2>
+        <div class="comments-open-content">
+
+        
+            <div id="comment-greeting"></div>
+
+            <form method="post" action="http://www.ruanyifeng.com/cgi-bin/mtos/mt-comments.cgi" name="comments_form" id="comments-form" onsubmit="return pleaseWait();">
+                <input type="hidden" name="static" value="1">
+                <input type="hidden" name="entry_id" value="1800">
+                <input type="hidden" name="__lang" value="en">
+                <input type="hidden" name="parent_id" value="" id="comment-parent-id">
+                <input type="hidden" name="armor" value="1">
+                <input type="hidden" name="preview" value="">
+                <input type="hidden" name="sid" value="">
+                <div id="comments-open-data">
+            <div id="comments-open-text">
+                    <p><label for="comment-text">您的留言
+                    （HTML标签部分可用）</label></p>
+                    <p><textarea id="comment-text" name="text" rows="10" cols="50"></textarea></p>
+                </div>
+                    <div id="comment-form-name">
+                        <p><label for="comment-author">您的大名：</label></p>
+                        <p><input id="comment-author" name="author" size="30" value="">  <span class="hint"> «-必填</span></p>
+                    </div>
+                    <div id="comment-form-email">
+                        <p><label for="comment-email">电子邮件：</label></p>
+                        <p><input id="comment-email" name="email" size="30" value="">  <span class="hint"> «-必填，不公开</span></p>
+                    </div>
+                    <div id="comment-form-url">
+                        <p><label for="comment-url">个人网址：</label></p>
+                        <p><input id="comment-url" name="url" size="30" value="">  <span class="hint"> «-我信任你，不会填写广告链接</span></p>
+                    </div>
+                    <div id="comment-form-remember-me">
+                        <p>
+                        <label for="comment-bake-cookie">记住个人信息？</label><input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="!this.checked?forgetMe(document.comments_form):rememberMe(document.comments_form)" value="1" accesskey="r"></p>
+                    </div>
+                </div>
+                    <div id="comment-form-reply" style="display:none">
+                    <input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()">
+                    <label for="comment-reply" id="comment-reply-label"></label>
+                </div>
+                <div id="comments-open-captcha"></div>
+                <div id="comments-open-footer">
+<div id="wait" style="display:none;">
+<p><strong>正在发表您的评论，请稍候</strong></p>
+<p>
+<input type="text" name="percent" size="3" style="font-family:Arial; color:black;text-align:center; border-width:medium; border-style:none;">           
+<input type="text" name="chart" size="46" style="font-family:Arial;font-weight:bolder; color:black; padding:0px; border-style:none;">
+</p>
+</div>
+
+                    <p><input type="submit" accesskey="s" name="post" id="comment-submit" value="发表">  <span class="hint"> «- 点击按钮</span></p>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+    
+
+
+</div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <script type="text/javascript" src="http://www.ruanyifeng.com/blog/js/prism.js"></script>
+
+            <div id="footer">
+    <div id="footer-inner">
+        <div id="footer-content">
+<p><a href="/contact.html">联系方式</a> | ruanyifeng.com 2003 - 2015
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46829782-1', 'ruanyifeng.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<!-- Site Meter -->
+<a href="http://sm3.sitemeter.com/stats.asp?site=sm3bomoocom" target="_top">
+<img src="http://sm3.sitemeter.com/meter.asp?site=sm3bomoocom" alt="Site Meter" border="0"></a>
+
+<!-- Copyright (c)2009 Site Meter -->
+
+</p>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="share_button_proto" style="display:none;"><a class="bshareDiv" href="http://www.bshare.cn/share" style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height:21px;color:#333;;background:transparent url(http://static.bshare.cn/frame/images/button_custom10-zh-Orange.gif) no-repeat;text-align:center;width:51px;"></div><div style="clear:both;"></div></a><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#uuid=15e016b4-0028-44f1-a40d-a3c9d9c13c28&amp;style=10&amp;bgcolor=#fff&amp;bp=facebook,twitter,sinaminiblog,gplus,qqmb,qzone,sohuminiblog,neteasemb,douban,feixin,renren,kaixin001,qqim,fanfou,instapaper&amp;ssc=false"></script>                                       
+<script type="text/javascript" charset="utf-8">
+bShare.addEntry({
+    title: document.getElementById("page-title").innerHTML,
+url:window.location.href
+});
+</script></div>
+<script>
+document.getElementById("share_button").innerHTML=document.getElementById("share_button_proto").innerHTML;
+</script>
+
+
+
+
+        </div>
+    </div>
+
+<div id="bsBox" class="bsBox"><div class="bsClose">X</div><div class="bsTop"><div class="bsReturn">选择其他平台 &gt;&gt;</div><span style="margin-left:15px;">分享到</span><span class="bsPlatName"></span></div><div class="bsFrameDiv"><iframe class="bShareFrame" name="bsFrame406" frameborder="0" scrolling="no" allowtransparency="true"></iframe></div><div id="bsMorePanel" style="display: none;"></div></div><div id="bsPanelHolder"><div id="bsPanel" style="display:none;"><div class="bsTitle"><a style="float:left;height:20px;line-height:20px;font-weight:bold;" class="bsSiteLink" target="_blank" href="http://www.bshare.cn/intro">分享到...</a><a class="bsSiteLink" style="cursor:pointer;float:right;height:20px;line-height:20px;font-weight:bold;" onclick="document.getElementById('bsPanel').style.display='none';">X</a><div class="bsClear"></div></div><div class="bsClear"></div><div style="padding-left:8px;background:#fff;*height:244px;"><div style="height:47px;border-bottom:1px #ccc solid;padding:4px 0 4px 16px;margin-right:8px;_padding-left:12px;"><div class="bsRlogo" onmouseover="javascript:this.className='bsRlogoSel'" onmouseout="javascript:this.className='bsRlogo'"><a href="javascript:;" onclick="javascript:bShare.share(event,'facebook');return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/facebook.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">Facebook</div></a></div><div class="bsRlogo" onmouseover="javascript:this.className='bsRlogoSel'" onmouseout="javascript:this.className='bsRlogo'"><a href="javascript:;" onclick="javascript:bShare.share(event,'twitter');return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/twitter.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">Twitter</div></a></div><div class="bsRlogo" onmouseover="javascript:this.className='bsRlogoSel'" onmouseout="javascript:this.className='bsRlogo'"><a href="javascript:;" onclick="javascript:bShare.share(event,'sinaminiblog');return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/sinaminiblog.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">新浪微博</div></a></div></div><div class="bsLogoLink"><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="Google+" onclick="javascript:bShare.share(event,'gplus');return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/gplus.png) no-repeat;">Google+</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="QQ空间" onclick="javascript:bShare.share(event,'qzone');return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1566px;">QQ空间</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="网易微博" onclick="javascript:bShare.share(event,'neteasemb');return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1332px;">网易微博</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="飞信" onclick="javascript:bShare.share(event,'feixin');return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -702px;">飞信</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="开心网" onclick="javascript:bShare.share(event,'kaixin001');return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1008px;">开心网</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="饭否" onclick="javascript:bShare.share(event,'fanfou');return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -666px;">饭否</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="雪球" onclick="javascript:bShare.share(event,'xueqiu');return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/xueqiu.png) no-repeat;">雪球</a></div></div><div class="bsLogoLink"><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="腾讯微博" onclick="javascript:bShare.share(event,'qqmb');return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1512px;">腾讯微博</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="搜狐微博" onclick="javascript:bShare.share(event,'sohuminiblog');return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1800px;">搜狐微博</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="豆瓣网" onclick="javascript:bShare.share(event,'douban');return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -540px;">豆瓣网</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="人人网" onclick="javascript:bShare.share(event,'renren');return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1674px;">人人网</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="QQ好友" onclick="javascript:bShare.share(event,'qqim');return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/qqim.png) no-repeat;">QQ好友</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="Instapaper" onclick="javascript:bShare.share(event,'instapaper');return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -954px;">Instapaper</a></div><div class="bsLogo" onmouseover="javascript:this.className='bsLogoSel'" onmouseout="javascript:this.className='bsLogo'"><a href="javascript:;" title="美味书签" onclick="javascript:bShare.share(event,'delicious');return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -432px;">美味书签</a></div></div><div class="bsClear"></div></div><div style="height:20px;line-height:20px;padding:0 8px;border-top:1px solid #e8e8e8;color:#666;background:#f2f2f2;"><div class="buzzButton" style="float:left;">更多平台... <font style="font-weight:normal;">(133)</font></div><div id="bsPower" style="float:right;text-align:right;overflow:hidden;height:100%;"><a class="bsSiteLink" style="font-size:10px;vertical-align:text-bottom;line-height:24px;cursor:pointer;" href="http://www.bshare.cn" target="_blank"><span style="font-size:10px;vertical-align:text-bottom;"><span style="color:#f60;">b</span>Share</span></a></div></div></div></div><style>.tb_button {padding:1px;cursor:pointer;border-right: 1px solid #8b8b8b;border-left: 1px solid #FFF;border-bottom: 1px solid #fff;}.tb_button.hover {borer:2px outset #def; background-color: #f8f8f8 !important;}.ws_toolbar {z-index:100000} .ws_toolbar .ws_tb_btn {cursor:pointer;border:1px solid #555;padding:3px}   .tb_highlight{background-color:yellow} .tb_hide {visibility:hidden} .ws_toolbar img {padding:2px;margin:0px}</style></body></html>

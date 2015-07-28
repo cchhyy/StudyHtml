@@ -4,18 +4,6 @@
 <array>
 	<dict>
 		<key>highlighted_icon</key>
-		<string>icon_category_highlighted_-1</string>
-		<key>icon</key>
-		<string>icon_category_-1</string>
-		<key>name</key>
-		<string>全部分类</string>
-		<key>small_highlighted_icon</key>
-		<string>icon_filter_category_highlighted_-1</string>
-		<key>small_icon</key>
-		<string>icon_filter_category_-1</string>
-	</dict>
-	<dict>
-		<key>highlighted_icon</key>
 		<string>icon_category_highlighted_1</string>
 		<key>icon</key>
 		<string>icon_category_1</string>
@@ -36,6 +24,11 @@
 			<string>HTML 文档</string>
 			<string>HTML 列表</string>
 			<string>HTML 元素</string>
+			<string>HTML &lt;q&gt; 短文本引用</string>
+			<string>HTML &lt;span&gt;标签</string>
+			<string>HTML 标题</string>
+			<string>HTML 强调</string>
+			<string>HTML长文本引用</string>
 		</array>
 	</dict>
 	<dict>
@@ -53,35 +46,23 @@
 		<string>icon_filter_category_20</string>
 		<key>subcategories</key>
 		<array>
-			<string>概念</string>
-			<string>语法</string>
-			<string>组合符号</string>
-			<string>选择器</string>
-			<string>继承和优先级</string>
-			<string>字体</string>
-			<string>对齐方式</string>
-			<string>格式处理</string>
-			<string>文本</string>
-			<string>盒模型</string>
-			<string>背景</string>
-			<string>display</string>
-			<string>position</string>
-			<string>2D变形</string>
-			<string>3D变形</string>
-			<string>动画</string>
+			<string>CSS样式</string>
+			<string>CSS代码语法</string>
+			<string>CSS选择器</string>
+			<string>CSS块级元素</string>
+			<string>CSS内联元素</string>
+			<string>CSS内联块状元素</string>
+			<string>CSS盒模型</string>
+			<string>CSS布局</string>
+			<string>CSS动画</string>
 		</array>
 	</dict>
 	<dict>
 		<key>subcategories</key>
 		<array>
-			<string>js介绍</string>
-			<string>基本语法</string>
-			<string>基本类型</string>
-			<string>类型识别</string>
-			<string>内置对象</string>
-			<string>对象</string>
-			<string>window</string>
-			<string>document</string>
+			<string>js基本语法</string>
+			<string>js数据类型</string>
+			<string>js内置对象</string>
 		</array>
 		<key>map_icon</key>
 		<string>ic_category_99</string>
@@ -97,6 +78,10 @@
 		<string>icon_filter_category_99</string>
 	</dict>
 	<dict>
+		<key>subcategories</key>
+		<array>
+			<string>json入门</string>
+		</array>
 		<key>map_icon</key>
 		<string>ic_category_2</string>
 		<key>highlighted_icon</key>

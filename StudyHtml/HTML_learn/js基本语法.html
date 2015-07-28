@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body background="http://www.monmonkey.com/bgimage/bgimage.jpg" youdao="bind"><script type="text/javascript" src=""></script><ins id="aswift_0_expand" style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent"><iframe width="468" height="60" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+
+<h2>基本语法</h2>
+
+
+
+<h4>■ <a name="mulu">目录</a></h4>
+
+<ul>
+
+<li><a href="#duixiang">对象</a></li>
+
+<li><a href="#shuxing">属性</a></li>
+
+<li><a href="#fangfa">方法</a></li>
+
+<li><a href="#bianliang">变量</a></li>
+
+<li><a href="#zhushi">注释（/* ... */）</a></li>
+
+<li><a href="#daxiaoxie">大小写</a></li>
+
+<li><a href="#stIf">条件判断（if）</a></li>
+
+<li><a href="#stSwitch">条件判断（switch）</a></li>
+
+<li><a href="#stWhile">循环（while）</a></li>
+
+<li><a href="#stDo">循环（do）</a></li>
+
+<li><a href="#stFor">循环（for）</a></li>
+
+<li><a href="#stBreak">跳出循环（break）</a></li>
+
+<li><a href="#stContinue">继续循环（continue）</a></li>
+
+<li><a href="#stLabel">标记（label）</a></li>
+
+<li><a href="#stWith">使用对象（with）</a></li>
+
+</ul>
+
+
+<h4>■ <a name="duixiang">对象</a></h4>
+
+<div class="i">
+
+<p>JavaScript继承了面向对象的编程思想，窗体、文档、表单等都可以被看成对象。对象有以下这些。</p>
+
+<pre class="c">□ <!--<a href="object.htm">-->对象（Object）<!--</a>-->
+├□ <!--<a href="number.htm">-->数值（Number）<!--</a>-->
+├□ <!--<a href="string.htm">-->字符串（String）<!--</a>-->
+├□ <!--<a href="boolean.htm">-->布尔值（Boolean）<!--</a>-->
+├□ <!--<a href="array.htm">-->数组（Array）<!--</a>-->
+├□ <!--<a href="math.htm">-->数学函数（Math）<!--</a>-->
+├□ <!--<a href="date.htm">-->日期（Date）<!--</a>-->
+├□ <!--<a href="function.htm">-->函数（Function）<!--</a>-->
+├□ <!--<a href="regexp.htm">-->正则表达式（RegExp）<!--</a>-->
+└□ <!--<a href="window.htm">-->窗口（Window）<!--</a>-->
+　├□ <!--<a href="navigator.htm">-->浏览器（Navigator）<!--</a>-->
+　│├□ <!--<a href="other.htm#objPlugin">-->插件（Plugin）<!--</a>-->
+　│└□ <!--<a href="other.htm#objMimeType">-->MIME类型（MimeType）<!--</a>-->
+　├□ <!--<a href="window.htm">-->框架（Frame）<!--</a>-->
+　├□ <!--<a href="event.htm">-->事件（Event）<!--</a>-->
+　├□ <!--<a href="history.htm">-->履历（History）<!--</a>-->
+　├□ <!--<a href="location.htm">-->本地化（Location）<!--</a>-->
+　├□ <!--<a href="other.htm#objScreen">-->屏幕信息（Screen）<!--</a>-->
+　└□ <!--<a href="document.htm">-->文档（Document）<!--</a>-->
+　　├□ <!--<a href="layer.htm">-->层（Layer）<!--</a>-->
+　　├□ <!--<a href="image.htm">-->图像（Image）<!--</a>-->
+　　├□ <!--<a href="other.htm#objLink">-->链接（Link）<!--</a>-->
+　　├□ <!--<a href="anchors.htm">-->锚（Anchor）<!--</a>-->
+　　├□ <!--<a href="other.htm#objApplet">-->小程序（Applet）<!--</a>-->
+　　├□ <!--<a href="form.htm">-->表单（Form）<!--</a>-->
+　　│├□ <!--<a href="form.htm#ElmText">-->文本（Text）<!--</a>-->
+　　│├□ <!--<a href="form.htm#ElmText">-->密码（Password）<!--</a>-->
+　　│├□ <!--<a href="form.htm#ElmText">-->文件上传（File）<!--</a>-->
+　　│├□ <!--<a href="form.htm#ElmText">-->隐藏元素（Hidden）<!--</a>-->
+　　│├□ <!--<a href="form.htm#ElmText">-->文本领域（Textarea）<!--</a>-->
+　　│├□ <!--<a href="form.htm#ElmButton">-->复选框（Checkbox）<!--</a>-->
+　　│├□ <!--<a href="form.htm#ElmButton">-->单选框（Radio）<!--</a>-->
+　　│├□ <!--<a href="form.htm#ElmButton">-->按钮（Button）<!--</a>-->
+　　│├□ <!--<a href="form.htm#ElmButton">-->提交按钮（Submit）<!--</a>-->
+　　│├□ <!--<a href="form.htm#ElmButton">-->重置按钮（Reset）<!--</a>-->
+　　│└□ <!--<a href="form.htm#ElmSelect">-->下拉列表（Select）<!--</a>-->
+　　│　└□ <!--<a href="form.htm#ElmOption">-->条目（Option）<!--</a>-->
+　　└□ <!--<a href="element.htm">-->元素（Elements）<!--</a>-->
+　　　└□ <!--<a href="style.htm">-->样式（Style）<!--</a>-->
+</pre>
+
+
+</div>
+
+
+
+<h4>■ <a name="shuxing">属性</a></h4>
+
+<div class="i">
+
+<p>对象拥有可以调用或是设定值的属性。比如说 navigator 对象有以下属性。</p>
+
+<pre class="c">navigator.appName       // 浏览器的名字
+navigator.appVersion    // 浏览器的版本
+</pre>
+
+</div>
+
+
+
+<h4>■ <a name="fangfa">方法</a></h4>
+
+<div class="i">
+
+<p>对象还拥有可以调用处理过程的方法。比如说 window 对象有以下方法。</p>
+
+<pre class="c">window.alert("Hello");           // 显示警告对话框
+window.open("xx.htm", "_blank"); // 在新窗口中打开目标文档
+</pre>
+
+</div>
+
+
+
+<h4>■ <a name="bianliang">变量</a></h4>
+
+<div class="i">
+
+<p>除了对象、属性、方法，JavaScript里还可以使用变量。变量是一个起了名字的容器，可以给它赋予数值、字符串等值。下面的例子的意义是“把5这个值赋予名为xx的变量”，而不是“xx等于5”。</p>
+
+<pre class="c">xx = 5;
+</pre>
+
+<p>变量名可以使用包括下划线（_）的半角英文数字，但是不能以数字开头。另外，不能使用JavaScript已经预先定义好的名字，比如 if 或 while 等等。</p>
+
+<pre class="c">○ count_of_today
+○ abc123
+× 123abc
+× if
+○ if_while
+</pre>
+
+<p>声明变量时使用var。</p>
+
+<pre class="c">var xx, yy, zz;
+xx = 5;
+yy = 8;
+zz = xx + yy;
+</pre>
+
+</div>
+
+
+
+<h4>■ <a name="zhushi">注释（/* ... */）</a></h4>
+
+<div class="i">
+
+<p>和 C++ 一样，从 // 开始到这一行的结束都是注释。</p>
+
+<pre class="c">xx = 5;   // 在这里写注释
+</pre>
+
+<p>/* 与 */ 之间也是注释。</p>
+
+<pre class="c">/* 这里的文字都是注释。*/
+</pre>
+
+<p>/* ... */ 可以用来注释复数行。</p>
+
+<pre class="c">/*
+ * 这里的文字都是注释。
+ */
+</pre>
+
+<p>/* ... */ 无法嵌套使用。</p>
+
+<pre class="c">/* 注释无法 /* 嵌套 */ 使用。*/ ← error
+</pre>
+
+</div>
+
+
+
+<h4>■ <a name="daxiaoxie">大小写</a></h4>
+
+<div class="i">
+
+<p>注意：JavaScript在使用变量和函数的时候是区分大小写的。比如以下变量名是不同的变量。</p>
+
+<pre class="c">filename = "aaa.htm";
+FileName = "bbb.htm";
+FILENAME = "ccc.htm";
+</pre>
+
+</div>
+
+
+
+<h4>■ <a name="stIf">条件判断（if）</a></h4>
+
+<div class="item">◆ <a name="if">if (<i>expression</i>) <i>statements1</i> </a><a name="else">else <i>statements2</i></a></div>
+
+<div class="i">
+
+<p><i>expression</i> 的值为 true 则执行 <i>statements1</i>，值为为 false 则执行 <i>statements2</i>。在下面的例子中，变量 n 的值比10小则弹出 SMALL 对话框，否则就弹出 BIG 对话框。</p>
+
+<pre class="c">if (n &lt; 10) {
+    alert("SMALL");
+} else {
+    alert("BIG");
+}
+</pre>
+
+<p>else的部分也可以不写。</p>
+
+<pre class="c">if (n &lt; 10) {
+    alert("SMALL");
+}
+</pre>
+
+<p>也可以像下面这样写if语句。</p>
+
+<pre class="c">if (n &lt; 10) {
+    alert("SMALL");       // 比10小的话弹出 SMALL 对话框
+} else if (n &gt; 20) {
+    alert("BIG");         // 比20大的话弹出 BIG 对话框
+} else {
+    alert("NORMAL");      // 其他情况弹出 NORMAL 对话框
+}
+</pre>
+
+</div>
+
+
+
+<h4>■ <a name="stSwitch">条件判断（switch）</a></h4>
+
+<div class="item">◆ <a name="switch">switch (<i>expression</i>) { </a><a name="case">case <i>value</i>: <i>statements</i>; ... }</a></div>
+
+<div class="i">
+
+<p>按 <i>expression</i> 的值的不同执行各种处理。在下面的例子中，xx 的值为1时，弹出 ONE 对话框，xx 的值为2时，弹出 TWO 对话框，xx 的值为3或4时，弹出 THREEorFOUR 对话框，其他情况则弹出 OTHER 对话框。</p>
+
+<pre class="c">switch (xx) {
+case 1:
+    alert("ONE");
+    break;
+case 2:
+    alert("TWO");
+    break;
+case 3:
+case 4:
+    alert("THREEorFOUR");
+    break;
+default:
+    alert("OTHER");
+    break;
+}
+</pre>
+
+</div>
+
+
+
+<h4>■ <a name="stWhile">循环（while）</a></h4>
+
+<div class="item">◆ <a name="while">while (<i>expression</i>) <i>statements</i></a></div>
+
+<div class="i">
+
+<p><i>expression</i> 的值为 true 时，循环执行 <i>statements</i> 中的处理。下面的例子输出0123456789。</p>
+
+<pre class="c">n = 0;
+while (n &lt; 10) {
+    document.write(n);
+    n++;
+}
+</pre>
+
+</div>
+
+
+
+<h4>■ <a name="stDo">循环（do）</a></h4>
+
+<div class="item">◆ <a name="do">do <i>statements</i> while (<i>expression</i>)</a></div>
+
+<div class="i">
+
+<p><i>expression</i> 的值为 true 时，循环执行 <i>statements</i> 中的处理。下面的例子输出0123456789。与 while (……) {……} 的不同点是，就算 <i>expression</i> 的值一开始就是false，<i>statements</i> 的处理也会被执行一次。</p>
+
+<pre class="c">n = 0;
+do {
+    document.write(n);
+    n++;
+} while (n &lt; 10);
+</pre>
+
+</div>
+
+
+
+<h4><a name="stFor">■ 循环（for）</a></h4>
+
+<div class="item">◆ <a name="for">for (<i>expression1</i>; <i>expression2</i>; <i>expression3</i>) <i>statements</i></a></div>
+
+<div class="i">
+
+<p>先执行 <i>expression1</i> 的处理，然后在 <i>expression2</i> 的值为true的时候循环执行 <i>statements</i> 和 <i>expression3</i> 的处理。下面的例子循环了10次，输出0123456789。</p>
+
+<pre class="c">for (i = 0; i &lt; 10; i++) {
+    document.write(i);
+}
+</pre>
+
+</div>
+
+<div class="item">◆ <a name="for2">for (<i>variable</i> in <i>array</i>) <i>statements</i></a></div>
+
+<div class="i">
+
+<p>遍历数组的各元素执行处理。下面的例子输出 ABC。</p>
+
+<pre class="c">xx = new Array(3);
+xx[0] = "A";
+xx[1] = "B";
+xx[2] = "C";
+for (i in xx) {
+    document.write(xx[i]);
+}
+</pre>
+
+<p>for可以用来调查对象所拥有的属性。但也有些属性查不到（拥有DontEnum属性的属性）。</p>
+
+<pre class="c">for (i in navigator) {
+    document.write(i, "&lt;br&gt;");
+}
+</pre>
+
+</div>
+
+
+
+<h4><a name="stBreak">■ 跳出循环（break）</a></h4>
+
+<div class="item">◆ <a name="break">break</a></div>
+
+<div class="item">◆ <a name="break2">break <i>label</i></a></div>
+
+<div class="i">
+
+<p>使用 break 可以跳出最接近的一层循环。包括 for、while、do 循环或 switch 语句的 case 部分。下面的例子输出01234。</p>
+
+<pre class="c">for (i = 0; i &lt; 10; i++) {
+    if (i == 5) {
+        break;
+    }
+    document.write(i);
+}
+</pre>
+
+<p>用 <i>label</i> 可以用来一次跳到循环的最外面。JavaScript 1.2 以后版本支持。在下面的例子里，一旦 xx 大于 20 就会跳出最外面的 for 循环。</p>
+
+<pre class="c">abc:
+  for (i = 0; i &lt; 10; i++) {
+      for (j = 0; j &lt; 10; j++) {
+          xx = i * 10 + j;
+          if (xx &gt; 20) {
+              break abc;
+          }
+          document.write(xx + "&lt;br&gt;");
+      }
+  }
+</pre>
+
+</div>
+
+
+
+<h4><a name="stContinue">■ 继续循环（continue）</a></h4>
+
+<div class="item">◆ <a name="continue">continue</a></div>
+
+<div class="item">◆ <a name="continue2">continue <i>label</i></a></div>
+
+<div class="i">
+
+<p>跳过循环内的剩余代码，从最接近的循环再次开始执行。在下面的例子里，跳过5，输出012346789。</p>
+
+<pre class="c">for (i = 0; i &lt; 10; i++) {
+    if (i == 5) {
+        continue;
+    }
+    document.write(i);
+}
+</pre>
+
+<p>用 <i>label</i> 可以跳跃到指定的循环继续执行。JavaScript 1.2 以后版本支持。</p>
+
+<pre class="c">abc:
+  for (i = 0; i &lt; 10; i++) {
+      for (j = 0; j &lt; 10; j++) {
+          xx = i * 10 + j;
+          if (xx == 55) {
+              continue abc;
+          }
+      }
+  }
+</pre>
+
+</div>
+
+
+
+<h4><a name="stLabel">■ 标记（label）</a></h4>
+
+<div class="item">◆ <i>label</i>:</div>
+
+<div class="i">
+
+<p>用 label 可以在JavaScript代码中设置标记。break语句和continue语句都可以使用它。JavaScript 1.2 以后版本支持。</p>
+
+<pre class="c">label1:
+  for (i = 0; i &lt; 10; i++) {
+      for (j = 0; j &lt; 10; j++) {
+          if (func(i, j) {
+              break label1;
+          }
+      }
+  }
+</pre>
+
+</div>
+
+
+
+<h4><a name="stWith">■ 使用对象（with）</a></h4>
+
+<div class="item">◆ <a name="with">with (<i>obj</i>) <i>statements</i></a></div>
+
+<div class="i">
+
+<p>使用 <i>obj</i> 指定的对象执行处理。比如下面的例子，</p>
+
+<pre class="c">document.write(document.bgColor);
+document.write(document.fgColor);
+</pre>
+
+<p>用 with 可以写成这种形式。</p>
+
+<pre class="c">with (document) {
+    write(bgColor);
+    write(fgColor);
+}
+</pre>
+
+</div>
+
+</body>
+</html>

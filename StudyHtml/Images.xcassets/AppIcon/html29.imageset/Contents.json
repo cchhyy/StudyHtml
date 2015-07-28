@@ -3,7 +3,7 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "html29.png"
+      "filename" : "58*58.png"
     },
     {
       "idiom" : "universal",
@@ -12,6 +12,12 @@
     {
       "idiom" : "universal",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "80*80.png",
+      "unassigned" : true,
+      "scale" : "1x"
     }
   ],
   "info" : {

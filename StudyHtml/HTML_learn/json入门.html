@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="Body">
+	<div class="main">
+    	<div class="Title">
+			<a class="jump_answer" href="#tags_nav" title="跳到回复"></a>
+    		<div class="QTitle">
+				    			<h1><a href="http://www.oschina.net/question/12_4733" hidefocus="true" name="top">JSON 入门指南</a></h1>
+					<div class="array"></div>
+    		</div>
+			<div class="clear"></div>
+    		
+    		<div class="clear"></div>
+    	</div>
+		    	    					
+		
+		<div class="Content">
+			<div class="detail"><p><strong>简介：</strong>&nbsp;JSON 即 JavaScript Object Natation，它是一种轻量级的数据交换格式，非常适合于服务器与 JavaScript 的交互。本文将快速讲解 JSON 格式，并通过代码示例演示如何分别在客户端和服务器端进行 JSON 格式数据的处理。</p> 
+<p>尽管有许多宣传关于 XML 如何拥有跨平台，跨语言的优势，然而，除非应用于 Web Services，否则，在普通的 Web 应用中，开发者经常为 XML 的解析伤透了脑筋，无论是服务器端生成或处理 XML，还是客户端用 JavaScript 解析 XML，都常常导致复杂的代码，极低的开发效率。实际上，对于大多数 Web 应用来说，他们根本不需要复杂的 XML 来传输数据，XML 的扩展性很少具有优势，许多 AJAX 应用甚至直接返回 HTML 片段来构建动态 Web 页面。和返回 XML 并解析它相比，返回 HTML 片段大大降低了系统的复杂性，但同时缺少了一定的灵活性。</p> 
+<p>现在， JSON 为 Web 应用开发者提供了另一种数据交换格式。让我们来看看 JSON 到底是什么，同 XML 或 HTML 片段相比，JSON 提供了更好的简单性和灵活性。</p> 
+<p><a><span class="atitle">JSON 数据格式解析 </span></a></p> 
+<p>和 XML 一样，JSON 也是基于纯文本的数据格式。由于 JSON 天生是为 JavaScript 准备的，因此，JSON 的数据格式非常简单，您可以用 JSON 传输一个简单的 String，Number，Boolean，也可以传输一个数组，或者一个复杂的 Object 对象。</p> 
+<p>String，Number 和 Boolean 用 JSON 表示非常简单。例如，用 JSON 表示一个简单的 String “ abc ”，其格式为：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode">"abc"</pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>除了字符 <code>"</code>，<code>\</code>，<code>/</code> 和一些控制符（<code>\b</code>，<code>\f</code>，<code>\n</code>，<code>\r</code>，<code>\t</code>）需要编码外，其他 Unicode 字符可以直接输出。下图是一个 String 的完整表示结构：</p> 
+<p><br><a><strong> 图 1. String 的完整表示结构 </strong></a><br> <a href="/uploads/img/201011/03230257_PxCK.jpg" target="_blank"><img src="http://www.oschina.net//uploads/img/201011/03230257_PxCK.jpg" alt=" 图 1. String 的完整表示结构 " width="580" height="401" style="cursor: pointer;"></a></p> 
+<p>一个 Number 可以根据整型或浮点数表示如下：</p> 
+<p><br><a><strong> 图 2. Number 的表示结构 </strong></a><br> <a href="/uploads/img/201011/03230300_VTyM.jpg" target="_blank"><img src="http://www.oschina.net//uploads/img/201011/03230300_VTyM.jpg" alt=" 图 2. Number 的表示结构 " width="580" height="258" style="cursor: pointer;"></a></p> 
+<p>这与绝大多数编程语言的表示方法一致，例如：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode">12345（整数）<br> -3.9e10（浮点数）</pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>Boolean 类型表示为 <code>true</code> 或 <code>false</code> 。此外，JavaScript 中的 null 被表示为 <code>null</code>，注意，<code>true</code>、<code>false</code> 和 <code>null</code> 都没有双引号，否则将被视为一个 String 。</p> 
+<p>JSON 还可以表示一个数组对象，使用 <code>[]</code> 包含所有元素，每个元素用逗号分隔，元素可以是任意的 Value，例如，以下数组包含了一个 String，Number，Boolean 和一个 null：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode">["abc",12345,false,null]</pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>Object 对象在 JSON 中是用 <code>{}</code> 包含一系列无序的 Key-Value 键值对表示的，实际上此处的 Object 相当于 Java 中的 <code>Map&lt;String, Object&gt;</code>，而不是 Java 的 Class 。注意 Key 只能用 String 表示。</p> 
+<p>例如，一个 Address 对象包含如下 Key-Value：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode">city:Beijing <br> street:Chaoyang Road <br> postcode:100025（整数）</pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>用 JSON 表示如下：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode">{"city":"Beijing","street":" Chaoyang Road ","postcode":100025}</pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>其中 Value 也可以是另一个 Object 或者数组，因此，复杂的 Object 可以嵌套表示，例如，一个 Person 对象包含 name 和 address 对象，可以表示如下：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode">{"name":"Michael","address":<br>    {"city":"Beijing","street":" Chaoyang Road ","postcode":100025}<br>}</pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p><a><span class="atitle">JavaScript 处理 JSON 数据 </span></a></p> 
+<p>上面介绍了如何用 JSON 表示数据，接下来，我们还要解决如何在服务器端生成 JSON 格式的数据以便发送到客户端，以及客户端如何使用 JavaScript 处理 JSON 格式的数据。</p> 
+<p>我们先讨论如何在 Web 页面中用 JavaScript 处理 JSON 数据。我们通过一个简单的 JavaScript 方法就能看到客户端如何将 JSON 数据表示给用户：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode">function handleJson() { <br>  var j={"name":"Michael","address":<br>      {"city":"Beijing","street":" Chaoyang Road ","postcode":100025}<br>  }; <br>  document.write(j.name); <br>  document.write(j.address.city); <br> }</pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>假定服务器返回的 JSON 数据是上文的：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode">{"name":"Michael","address":<br>    {"city":"Beijing","street":" Chaoyang Road ","postcode":100025}<br>}</pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>只需将其赋值给一个 JavaScript 变量，就可以立刻使用该变量并更新页面中的信息了，相比 XML 需要从 DOM 中读取各种节点而言，JSON 的使用非常容易。我们需要做的仅仅是发送一个 Ajax 请求，然后将服务器返回的 JSON 数据赋值给一个变量即可。有许多 Ajax 框架早已包含了处理 JSON 数据的能力，例如 Prototype（一个流行的 JavaScript 库：http://prototypejs.org）提供了 <code>evalJSON()</code> 方法，能直接将服务器返回的 JSON 文本变成一个 JavaScript 变量：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode">new Ajax.Request("http://url", { <br>  method: "get", <br>  onSuccess: function(transport) { <br>    var json = transport.responseText.evalJSON(); <br>    // TODO: document.write(json.xxx); <br>  } <br> });</pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p><a><span class="atitle"> 服务器端输出 JSON 格式数据 </span></a></p> 
+<p>下面我们讨论如何在服务器端输出 JSON 格式的数据。以 Java 为例，我们将演示将一个 Java 对象编码为 JSON 格式的文本。</p> 
+<p>将 String 对象编码为 JSON 格式时，只需处理好特殊字符即可。另外，必须用 (<code>"</code>) 而非 (<code>'</code>) 表示字符串：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode"> <br> static String string2Json(String s) { <br>    StringBuilder sb = new StringBuilder(s.length()+20); <br>    sb.append('\"'); <br>    for (int i=0; i&lt;s.length(); i++) { <br>        char c = s.charAt(i); <br>        switch (c) { <br>        case '\"': <br>            sb.append("\\\""); <br>            break; <br>        case '\\': <br>            sb.append("\\\\"); <br>            break; <br>        case '/': <br>            sb.append("\\/"); <br>            break; <br>        case '\b': <br>            sb.append("\\b"); <br>            break; <br>        case '\f': <br>            sb.append("\\f"); <br>            break; <br>        case '\n': <br>            sb.append("\\n"); <br>            break; <br>        case '\r': <br>            sb.append("\\r"); <br>            break; <br>        case '\t': <br>            sb.append("\\t"); <br>            break; <br>        default: <br>            sb.append(c); <br>        } <br>    } <br>    sb.append('\"'); <br>    return sb.toString(); <br> } <br> </pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>将 Number 表示为 JSON 就容易得多，利用 Java 的多态，我们可以处理 Integer，Long，Float 等多种 Number 格式：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode"> <br> static String number2Json(Number number) { <br>    return number.toString(); <br> } <br> </pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>Boolean 类型也可以直接通过 <code>toString()</code> 方法得到 JSON 的表示：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode"> <br> static String boolean2Json(Boolean bool) { <br>    return bool.toString(); <br> } <br> </pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>要将数组编码为 JSON 格式，可以通过循环将每一个元素编码出来：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode"> <br> static String array2Json(Object[] array) { <br>    if (array.length==0) <br>        return "[]"; <br>    StringBuilder sb = new StringBuilder(array.length &lt;&lt; 4); <br>    sb.append('['); <br>    for (Object o : array) { <br>        sb.append(toJson(o)); <br>        sb.append(','); <br>    } <br>    // 将最后添加的 ',' 变为 ']': <br>    sb.setCharAt(sb.length()-1, ']'); <br>    return sb.toString(); <br> } <br> </pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>最后，我们需要将 <code>Map&lt;String, Object&gt;</code> 编码为 JSON 格式，因为 JavaScript 的 Object 实际上对应的是 Java 的 <code>Map&lt;String, Object&gt; </code>。该方法如下：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode"> <br> static String map2Json(Map&lt;String, Object&gt; map) { <br>    if (map.isEmpty()) <br>        return "{}"; <br>    StringBuilder sb = new StringBuilder(map.size() &lt;&lt; 4); <br>    sb.append('{'); <br>    Set&lt;String&gt; keys = map.keySet(); <br>    for (String key : keys) { <br>        Object value = map.get(key); <br>        sb.append('\"'); <br>        sb.append(key); <br>        sb.append('\"'); <br>        sb.append(':'); <br>        sb.append(toJson(value)); <br>        sb.append(','); <br>    } <br>    // 将最后的 ',' 变为 '}': <br>    sb.setCharAt(sb.length()-1, '}'); <br>    return sb.toString(); <br> } <br> </pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>为了统一处理任意的 Java 对象，我们编写一个入口方法 <code>toJson(Object)</code>，能够将任意的 Java 对象编码为 JSON 格式：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode"> <br> public static String toJson(Object o) { <br>    if (o==null) <br>        return "null"; <br>    if (o instanceof String) <br>        return string2Json((String)o); <br>    if (o instanceof Boolean) <br>        return boolean2Json((Boolean)o); <br>    if (o instanceof Number) <br>        return number2Json((Number)o); <br>    if (o instanceof Map) <br>        return map2Json((Map&lt;String, Object&gt;)o); <br>    if (o instanceof Object[]) <br>        return array2Json((Object[])o); <br>    throw new RuntimeException("Unsupported type: " + o.getClass().getName()); <br> } <br> </pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>我们并未对 Java 对象作严格的检查。不被支持的对象（例如 List）将直接抛出 RuntimeException 。此外，为了保证输出的 JSON 是有效的，<code>Map&lt;String, Object&gt;</code> 对象的 Key 也不能包含特殊字符。细心的读者可能还会发现循环引用的对象会引发无限递归，例如，精心构造一个循环引用的 Map，就可以检测到 <code>StackOverflowException</code>：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode"> <br> @Test(expected=StackOverflowError.class) <br> public void testRecurrsiveMap2Json() { <br>    Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;(); <br>    map.put("key", map); <br>    JsonUtil.map2Json(map); <br> } <br> </pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p>好在服务器处理的 JSON 数据最终都应该转化为简单的 JavaScript 对象，因此，递归引用的可能性很小。</p> 
+<p>最后，通过 Servlet 或 MVC 框架输出 JSON 时，需要设置正确的 MIME 类型（application/json）和字符编码。假定服务器使用 UTF-8 编码，则可以使用以下代码输出编码后的 JSON 文本：</p> 
+<table border="0" cellspacing="0" cellpadding="0" width="100%"> 
+ <tbody> 
+  <tr> 
+   <td> 
+    <pre class="displaycode"> <br> response.setContentType("application/json;charset=UTF-8"); <br> response.setCharacterEncoding("UTF-8"); <br> PrintWriter pw = response.getWriter(); <br> pw.write(JsonUtil.toJson(obj)); <br> pw.flush(); <br> </pre> 
+   </td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p>&nbsp;</p> 
+<p><a><span class="atitle"> 小结 </span></a></p> 
+<p>JSON 已经是 JavaScript 标准的一部分。目前，主流的浏览器对 JSON 支持都非常完善。应用 JSON，我们可以从 XML 的解析中摆脱出来，对那些应用 Ajax 的 Web 2.0 网站来说，JSON 确实是目前最灵活的轻量级方案。</p> 
+
+		<style type="text/css">
+		#TagsSwitcher{color:#A00;}
+        #RecTags,#MyTags{margin:5px 0;}
+        #RecTags a.tag{line-height:24px;}
+		#favor_form p:first-child{margin:5px 0;}
+		#favor_form{width:200px;}
+        #favor_form p {color:#666;}
+        #favor_form form{width:200px;}
+        #favor_form form ._favor_input{display:block;margin:2px 0;width:199px;}
+        #favor_form form ._favor_button{float:left;padding:2px 5px;}
+        .favor_ok {text-align:center;font-size:10.5pt;width:199px;height:60px;margin-top:10px;}
+        #TagsSwitcher{cursor:pointer;float:right;margin-top:10px;}
+        #MyTags{display:none;width:199px;}
+        #MyTags a.tag {float:left; background-color: #E0EAF1;border-bottom: 1px solid #3E6D8E;border-right: 1px solid #7F9FB6;color: #3E6D8E;font-size: 8pt;line-height: 16px;margin: 2px 2px 2px 0;padding: 2px 4px;text-decoration: none;white-space: nowrap;}
+		#MyTags a.tag:hover{background-color: #3E6D8E;color: #FFF;}
+		.osc_promotion{ position: relative; display: inline-block; padding: 10px; margin: 10px 0; border: 1px solid #ccc;}
+        .osc_promotion .c{ position: absolute; right: -1px; top: -1px;}
+		.ask_toolbar {float:right;list-style: none; font-size: 12px; color: #333; height: 28px;_padding-top: 5px; overflow: hidden;margin:20px 0 10px 0;}
+        .ask_toolbar div{ float: left; margin-left: 5px; background: url("/img/ask-icon.gif") no-repeat; padding: 6px 0 6px 15px; padding-left: 15px; height: 16px;}
+        .ask_toolbar a{ height: 16px; color: #333; text-decoration: none; display:inline-block; zoom:1; vertical-align: middle; }
+        .ask_share{width: 89px;vertical-align: bottom; line-height: 15px; _line-height: 14px;}
+        .ask_share a{background: url("/img/ask-icon.gif"); width: 16px; }
+        a.ask_share_sina{ background: url("/img/ask-icon.gif") 0 -40px no-repeat; margin-left: 5px;  }
+        a.ask_share_tencent{background-position: 0 -70px; margin-left: 5px; }
+        .ask_toolbar em{ height: 28px; line-height:28px; width: 14px; display: inline-block; float: left; background: url("/img/ask-icon.gif") top right;}
+        .ask_collect a,.ask_report a, .ask_vote a, .ask_collected a{padding-left: 20px; line-height: 15px; }
+        .ask_collect a{ background: url("/img/ask-icon.gif") 0 -131px no-repeat; }
+        .ask_collected a{ background: url("/img/ask-icon.gif") 0 -100px no-repeat; }
+        div.ask_collect_count{ background: url("/img/ask-icon.gif") 0 -309px no-repeat; font-weight: bold; font-size: 14px; margin-left: 0; height: 16px;line-height: 16px;}
+        .ask_report a{ background: url("/img/ask-icon.gif") 0 -160px no-repeat;}
+        em.ask_collect_count_r{background-position: 59px -309px;}
+        .ask_vote a{background: url("/img/ask-icon.gif");}
+        		a.ask_vote_up{background-position: 3px -190px;}
+        a.ask_vote_down{background-position: 0 -280px;}
+        a.ask_vote_uped {background-position: 3px -190px;}
+        		a.ask_vote_downed {background-position: 0 -280px;}
+        .ask_vote span{ display: inline-block; margin: 0 10px; font-weight: bold; font-size: 14px; vertical-align: middle; margin-bottom: 2px; line-height: 16px;}
+		</style>
+		<div class="clear"></div>
+        
+		<div class="clear"></div>
+				        
+</body>
+</html>

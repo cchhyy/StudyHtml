@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="cnblogs_post_body"><p>　　CSS中， Box Model叫盒子模型（或框模型），Box Model规定了元素框处理元素内容（element content）、内边距（padding）、边框（border） 和 外边距（margin） 的方式。在HTML文档中，每个元素（element）都有盒子模型，所以说在Web世界里（特别是页面布局），Box Model无处不在。下面是Box Model的图示：</p>
+<p><img src="http://pic002.cnblogs.com/images/2012/287602/2012090115134292.png" alt=""></p>
+<p><span style="color: #ff0000;">　　　　　　　　　　　　　　　　　　Box-Model 1</span></p>
+<p>　　说明：上图中，由内而外依次是元素内容（content）、内边矩（padding-top、padding-right、padding-bottom、padding-left）、边框（border-top、border-right、border-bottom、border-left）和外边距（marging-top、margin-right、margin-bottom、margin-left）。</p>
+<p>　　内边距、边框和外边距可以应用于一个元素的所有边，也可以应用于单独的边。而且，外边距可以是负值，而且在很多情况下都要使用负值的外边距。</p>
+<p>　　<span style="color: #ff0000;"><span style="color: #000000;">下图是W3School的Box Model 图解：</span></span></p>
+<p><img src="http://pic002.cnblogs.com/images/2012/287602/2012090115292215.gif" alt=""></p>
+<p>　　　　　　　　　　　　　　<span style="color: #ff0000;">Box-Model 2（W3School）</span>　　</p>
+<p>　　说明：</p>
+<p>　　1.和第一幅图一样，在上图中，元素框的最内部分是实际的内容（element）；直接包围内容的是内边距（padding），内边距呈现了元素的背景（background）；内边距的边缘是边框（border）；边框以外是外边距（margin），外边距默认是透明的，因此不会遮挡其后的任何元素（其实元素的margin就是其所在父元素的padding）。元素的背景应用于由内容和内边距、边框组成的区域。</p>
+<p>　　2.内边距、边框和外边距都是可选的，默认值是零。但是，许多元素将由用户代理样式表设置外边距和内边距。可以通过将元素的 margin 和 padding 设置为零来覆盖这些浏览器样式。这可以分别进行，也可以使用通用选择器（*）对所有元素进行设置：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #008000;">/*</span><span style="color: #008000;">设置所有元素的外边距和内边矩为0</span><span style="color: #008000;">*/</span><span style="color: #800000;">
+* </span>{<span style="color: #ff0000;">
+  margin</span>:<span style="color: #0000ff;"> 0</span>;<span style="color: #ff0000;">
+  padding</span>:<span style="color: #0000ff;"> 0</span>;
+}</pre>
+</div>
+<p>&nbsp;</p>
+<p>　　3.&nbsp;在 CSS 中，width 和 height 指的是内容区域（element）的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。假设框的每个边上有 10 个像素的外边距和 5 个像素的内边距。如果希望这个元素框达到 100 个像素，就需要将内容的宽度设置为 70 像素，以下是CSS代码：</p>
+<div class="cnblogs_code">
+<pre><span style="color: #800000;">#box </span>{<span style="color: #ff0000;">
+  width</span>:<span style="color: #0000ff;"> 70px</span>;<span style="color: #ff0000;">
+  margin</span>:<span style="color: #0000ff;"> 10px</span>;<span style="color: #ff0000;">
+  padding</span>:<span style="color: #0000ff;"> 5px</span>;
+}</pre>
+</div>
+<p>下图是对上面CSS代码的解释：</p>
+<p>&nbsp;</p>
+<p><img src="http://pic002.cnblogs.com/images/2012/287602/2012090115451144.gif" alt=""></p>
+<p>&nbsp;　　以下是一个完整的CSS Box Model布局的示例。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show('85adaa41-bc62-49a9-b752-73c83549ddf1')"><img id="code_img_closed_85adaa41-bc62-49a9-b752-73c83549ddf1" class="code_img_closed" src="http://images.cnblogs.com/OutliningIndicators/ContractedBlock.gif" alt=""><img id="code_img_opened_85adaa41-bc62-49a9-b752-73c83549ddf1" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('85adaa41-bc62-49a9-b752-73c83549ddf1',event)" src="http://images.cnblogs.com/OutliningIndicators/ExpandedBlockStart.gif" alt=""><span class="cnblogs_code_collapse">View Code </span>
+<div id="cnblogs_code_open_85adaa41-bc62-49a9-b752-73c83549ddf1" class="cnblogs_code_hide">
+<pre><span style="color: #008080;"> 1</span> <span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;"> 2</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html </span><span style="color: #ff0000;">xmlns</span><span style="color: #0000ff;">="http://www.w3.org/1999/xhtml"</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;"> 3</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;"> 4</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>CSS Box Model<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;"> 5</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">style </span><span style="color: #ff0000;">type</span><span style="color: #0000ff;">="text/css"</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;"> 6</span> <span style="background-color: #f5f5f5; color: #800000;">        body
+</span><span style="color: #008080;"> 7</span>         <span style="background-color: #f5f5f5; color: #000000;">{</span>
+<span style="color: #008080;"> 8</span> <span style="background-color: #f5f5f5; color: #ff0000;">            background</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> #333</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;"> 9</span>         <span style="background-color: #f5f5f5; color: #000000;">}</span>
+<span style="color: #008080;">10</span> <span style="background-color: #f5f5f5; color: #800000;">        div
+</span><span style="color: #008080;">11</span>         <span style="background-color: #f5f5f5; color: #000000;">{</span>
+<span style="color: #008080;">12</span> <span style="background-color: #f5f5f5; color: #ff0000;">            height</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 240px</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">13</span> <span style="background-color: #f5f5f5; color: #ff0000;">            width</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 360px</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">14</span> <span style="background-color: #f5f5f5; color: #ff0000;">            border</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 5px solid yellow</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">15</span> <span style="background-color: #f5f5f5; color: #ff0000;">            background</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> blue</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">16</span> <span style="background-color: #f5f5f5; color: #ff0000;">            margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 0 auto</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">17</span>         <span style="background-color: #f5f5f5; color: #000000;">}</span>
+<span style="color: #008080;">18</span> <span style="background-color: #f5f5f5; color: #800000;">        span
+</span><span style="color: #008080;">19</span>         <span style="background-color: #f5f5f5; color: #000000;">{</span>
+<span style="color: #008080;">20</span> <span style="background-color: #f5f5f5; color: #ff0000;">            display</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> block</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">21</span> <span style="background-color: #f5f5f5; color: #ff0000;">            width</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 50%</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">22</span> <span style="background-color: #f5f5f5; color: #ff0000;">            height</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 50%</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">23</span> <span style="background-color: #f5f5f5; color: #ff0000;">            background</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> red</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">24</span> <span style="background-color: #f5f5f5; color: #ff0000;">            border</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 5px solid yellow</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">25</span> <span style="background-color: #f5f5f5; color: #ff0000;">            color</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> White</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">26</span> <span style="background-color: #f5f5f5; color: #ff0000;">            font-size</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 14px</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">27</span> <span style="background-color: #f5f5f5; color: #ff0000;">            font-weight</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> bold</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">28</span> <span style="background-color: #f5f5f5; color: #ff0000;">            margin</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> auto</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">29</span> <span style="background-color: #f5f5f5; color: #ff0000;">            margin-top</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 60px</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">30</span> <span style="background-color: #f5f5f5; color: #ff0000;">            line-height</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> 120px</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">31</span> <span style="background-color: #f5f5f5; color: #ff0000;">            text-align</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> center</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">32</span> <span style="background-color: #f5f5f5; color: #ff0000;">            vertical-align</span><span style="background-color: #f5f5f5; color: #000000;">:</span><span style="background-color: #f5f5f5; color: #0000ff;"> middle</span><span style="background-color: #f5f5f5; color: #000000;">;</span>
+<span style="color: #008080;">33</span>         <span style="background-color: #f5f5f5; color: #000000;">}</span>
+<span style="color: #008080;">34</span>     <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">style</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;">35</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;">36</span> <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;">37</span>     <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;">38</span>         <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>Box Model的内容<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">span</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;">39</span>     <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;">40</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span>
+<span style="color: #008080;">41</span> <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span></pre>
+</div>
+</div>
+<p>　　以下是上面示例的效果截图：</p>
+<p><img src="http://pic002.cnblogs.com/images/2012/287602/2012090116554998.jpg" alt=""></p>
+<p>参考：<a href="http://www.w3school.com.cn/css/css_boxmodel.asp">http://www.w3school.com.cn/css/css_boxmodel.asp</a></p></div>
+</body>
+</html>

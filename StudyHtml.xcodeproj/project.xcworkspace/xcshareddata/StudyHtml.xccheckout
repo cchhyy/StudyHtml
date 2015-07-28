@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>97C3CD8D-B2CE-4DA9-BD60-3D07A0E2D999</string>
+	<key>IDESourceControlProjectName</key>
+	<string>StudyHtml</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>197D6F22F6051DA63FD0EAEC64D05B00B554EF56</key>
+		<string>https://github.com/cchhyy/StudyHtml.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>StudyHtml.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>197D6F22F6051DA63FD0EAEC64D05B00B554EF56</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/cchhyy/StudyHtml.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>197D6F22F6051DA63FD0EAEC64D05B00B554EF56</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>197D6F22F6051DA63FD0EAEC64D05B00B554EF56</string>
+			<key>IDESourceControlWCCName</key>
+			<string>StudyHtml</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -66,7 +66,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSString *fileName = [NSString stringWithFormat:@"animation%ld.html",(long)indexPath.row];
-    NSLog(@"fileName = %@",fileName);
+//    NSLog(@"fileName = %@",fileName);
     HTMLAnimationController *hvc = [[HTMLAnimationController alloc]initWithHtmlFileName:fileName];
     MyNavController *nav = [[MyNavController alloc]initWithRootViewController:hvc];
     nav.modalPresentationStyle =  UIModalPresentationFormSheet;

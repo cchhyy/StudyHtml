@@ -23,9 +23,9 @@
 #import "SearchViewController.h"
 #import "SettingViewController.h"
 #import "SDImageCache.h"
+#import "MJRefresh.h"
 
 
-#define BaseUrl @"http://115.28.227.1/teacher/duke/getAndPostRequest.php?param=imageResource.json"
 
 @interface FirstViewController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AwesomeMenuItemDelegate,AwesomeMenuDelegate,UIAlertViewDelegate>{
     UIBarButtonItem *_firstItem;
@@ -43,6 +43,7 @@
 @implementation FirstViewController
 
 static NSString * const reuseIdentifier = @"Cell";
+
 -(instancetype)init{
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     return [self initWithCollectionViewLayout:layout];
@@ -63,14 +64,13 @@ static NSString * const reuseIdentifier = @"Cell";
 
     [self addAwemenu];
     [self addBarItems];
-    [self getDataByString:@"http://news.html5cn.org/index.php?page=1"];
-    [self getDataByString:@"http://news.html5cn.org/index.php?page=2"];
-    [self getDataByString:@"http://news.html5cn.org/index.php?page=3"];
-
-
+    [self getDataByStringIndex:1];
+    [self getDataByStringIndex:2];
+    [self topUpdate];
+    [self bottomUpdate];
 
 }
-
+#pragma mark 添加AwesomeMenu
 -(void)addAwemenu{
     UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
     UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
@@ -110,6 +110,7 @@ static NSString * const reuseIdentifier = @"Cell";
     NSLog(@"添加菜单成功");
 
 }
+#pragma mark collectionView的布局
 -(void)flowLayOut{
     //1.创建一个布局类的对象
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
@@ -127,7 +128,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.collectionViewLayout = flowLayout;
 }
 
-
+#pragma mark 添加导航栏按钮
 -(void)addBarItems{
     //添加导航栏左边的按钮
     UIImage *logoImage=[UIImage imageNamed: @"logo.png"];
@@ -246,9 +247,9 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark 获取数据
--(void)getDataByString:(NSString *)urlString{
+-(void)getDataByStringIndex:(int )index{
     //1.获取到html的NSData 数据
-    NSString *string  = urlString;
+     NSString *string = [NSString stringWithFormat:@"http://news.html5cn.org/index.php?page=%d",index];
     NSString *string1 = [NSString stringWithContentsOfURL:[NSURL URLWithString:string] encoding:NSUTF8StringEncoding error:nil];
     NSData *htmlData = [string1 dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -280,6 +281,12 @@ static NSString * const reuseIdentifier = @"Cell";
         }
     }
     [self.collectionView reloadData];
+    if ([self.collectionView.legendHeader isRefreshing]) {
+        [self.collectionView.legendHeader endRefreshing];
+    }
+    if ([self.collectionView.legendFooter isRefreshing]) {
+        [self.collectionView.legendFooter endRefreshing];
+    }
 }
 /*
 #pragma mark - Navigation
@@ -326,6 +333,35 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.navigationController pushViewController:dvc animated:YES];
 }
 
+#pragma mark 上下拉刷新
+-(void)topUpdate{
+    __weak typeof(self) WeakSelf = self;
+    [self.collectionView addLegendHeaderWithRefreshingBlock:^{
+        [WeakSelf.modelArray removeAllObjects];
+        [WeakSelf getDataByStringIndex:1];
+        [WeakSelf getDataByStringIndex:2];
+        [WeakSelf getDataByStringIndex:3];
+    }];
+    self.collectionView.header.updatedTimeHidden = NO;
+    
+    [self.collectionView.legendHeader beginRefreshing];
+}
+
+-(void)bottomUpdate{
+    static int  i = 4;
+        __weak typeof(self) WeakSelf = self;
+        [self.collectionView addLegendFooterWithRefreshingBlock:^{
+            [WeakSelf getDataByStringIndex:i];
+             i++;
+            NSLog(@"++++i = %d",i);
+        }];
+        [self.collectionView.footer beginRefreshing];
+         NSLog(@"i = %d",i);
+}
+
+
+
+
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -365,7 +401,7 @@ static NSString * const reuseIdentifier = @"Cell";
 //    UIModalTransitionStyleFlipHorizontal,
 //    UIModalTransitionStyleCrossDissolve,
 //    UIModalTransitionStylePartialCurl NS_ENUM_AVAILABLE_IOS(3_2),
-    NSLog(@"Select the index : %d",idx);
+    NSLog(@"Select the index : %ld",(long)idx);
     switch (idx) {
         case 0:
              [self presentSettingViewControllerWithText:@"本应用提供给喜欢学习的你，可以学习HTML的基础知识，可以查询前端工程师的大概薪资，可以观看一些简单的Demo，还可以收看到定期更新的热门行业资讯，希望您喜欢"];
@@ -378,7 +414,7 @@ static NSString * const reuseIdentifier = @"Cell";
             break;
         case 3:
         {
-            NSString *str  = [NSString stringWithFormat:@"共有%@缓存",[self getSize]];
+            NSString *str  = [NSString stringWithFormat:@"共有%@缓存",[SDImageCache getSizeAutoWithMBKB]];
             _alert =[ [UIAlertView alloc]initWithTitle:@"清除缓存" message: str delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
             [_alert show];
         }
@@ -391,10 +427,10 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 1) {
+    if (buttonIndex == 1 && alertView == _alert) {
         [[SDImageCache sharedImageCache]clearDiskOnCompletion:^{
             NSLog(@"内存已经清除");
-            UIAlertView  *alert =[ [UIAlertView alloc]initWithTitle:@"提示" message:@"缓存已清除" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+            UIAlertView  *alert =[ [UIAlertView alloc]initWithTitle:@"提示" message:@"缓存已清除" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
             [alert show];
     
         }];
@@ -421,36 +457,10 @@ static NSString * const reuseIdentifier = @"Cell";
     svc.modalTransitionStyle =  UIModalTransitionStyleCrossDissolve;
     svc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:svc animated:YES completion:nil];
-    svc.view.superview.frame = CGRectMake(0, 0, 300, 450);
+    svc.preferredContentSize = CGSizeMake(320, 350);
     svc.setingLabel.text = text;
 }
 
 
--(NSString *)getSize
-{
-    NSInteger size = [[SDImageCache sharedImageCache] getSize];
-    
-    //        NSLog(@"%ld",size);
-    NSString *unit = @"B";
-    CGFloat sizeFormater = 0;
-    if (size > 1024 * 1024) {
-        sizeFormater = (size * 1.0) / 1024 /1024;
-        unit = @"M";
-    }
-    else if(size >  1024)
-    {
-        sizeFormater = size * 1.0/1024;
-        unit = @"KB";
-    }
-    else{
-        sizeFormater = size;
-        unit = @"B";
-    }
-    
-    NSString *sizeString = [NSString stringWithFormat:@"%.2f%@",sizeFormater,unit];
-    
-    NSLog(@"%@",sizeString);
-    return sizeString;
-    
-}
+
 @end

@@ -43,6 +43,34 @@ BOOL ImageDataHasPNGPreffix(NSData *data) {
     NSFileManager *_fileManager;
 }
 
+
+
++(NSString *)getSizeAutoWithMBKB{
+        NSInteger size = [[SDImageCache sharedImageCache] getSize];
+        //        NSLog(@"%ld",size);
+        NSString *unit = @"B";
+        CGFloat sizeFormater = 0;
+        if (size > 1024 * 1024) {
+            sizeFormater = (size * 1.0) / 1024 /1024;
+            unit = @"M";
+        }
+        else if(size >  1024)
+        {
+            sizeFormater = size * 1.0/1024;
+            unit = @"KB";
+        }
+        else{
+            sizeFormater = size;
+            unit = @"B";
+        }
+        
+        NSString *sizeString = [NSString stringWithFormat:@"%.2f%@",sizeFormater,unit];
+        
+        NSLog(@"%@",sizeString);
+        return sizeString;
+    
+}
+
 + (SDImageCache *)sharedImageCache {
     static dispatch_once_t once;
     static id instance;

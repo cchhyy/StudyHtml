@@ -51,6 +51,12 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  */
 @property (assign, nonatomic) NSUInteger maxCacheSize;
 
+
+
+
+//自动在尾部生成M，B，KB等符号的获取缓存容量的方法
++(NSString *)getSizeAutoWithMBKB;
+    
 /**
  * Returns global shared cache instance
  *

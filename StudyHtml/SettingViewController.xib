@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 触摸上面的文字返回" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHX-qQ-wPU">
-                    <rect key="frame" x="53" y="400" width="300" height="21"/>
+                    <rect key="frame" x="53" y="305" width="300" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="HV7-h5-4uc"/>
                     </constraints>
@@ -25,7 +25,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" alpha="0.84999999999999987" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAU-cP-VL4">
-                    <rect key="frame" x="53" y="100" width="300" height="300"/>
+                    <rect key="frame" x="53" y="5" width="300" height="300"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="RwG-kE-TSR"/>
@@ -42,7 +42,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="fHX-qQ-wPU" secondAttribute="centerX" id="3Q1-gz-HNR"/>
-                <constraint firstItem="MAU-cP-VL4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="Lpg-Xe-UHU"/>
+                <constraint firstItem="MAU-cP-VL4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="Lpg-Xe-UHU"/>
                 <constraint firstItem="MAU-cP-VL4" firstAttribute="width" secondItem="fHX-qQ-wPU" secondAttribute="width" id="MIt-8o-fPf"/>
                 <constraint firstItem="fHX-qQ-wPU" firstAttribute="top" secondItem="MAU-cP-VL4" secondAttribute="bottom" id="Uhq-Jm-egc"/>
                 <constraint firstAttribute="centerX" secondItem="MAU-cP-VL4" secondAttribute="centerX" id="ge4-pG-uzQ"/>

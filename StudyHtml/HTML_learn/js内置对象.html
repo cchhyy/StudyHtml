@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="article_details" class="details">
+    <div class="article_title">   
+         <span class="ico ico_type_Original"></span>
+
+
+    <h1>
+        <span class="link_title"><a href="/baok1592/article/details/6478261">
+        JavaScript的内置对象和浏览器对象            
+        </a>
+        </span>
+    </h1>
+</div>
+
+   
+    
+</div>
+<div class="tag2box"><a href="http://www.csdn.net/tag/%e6%b5%8f%e8%a7%88%e5%99%a8" target="_blank" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">浏览器</a><a href="http://www.csdn.net/tag/javascript" target="_blank" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">javascript</a><a href="http://www.csdn.net/tag/date" target="_blank" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">date</a><a href="http://www.csdn.net/tag/constructor" target="_blank" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">constructor</a><a href="http://www.csdn.net/tag/prototype" target="_blank" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">prototype</a><a href="http://www.csdn.net/tag/%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f" target="_blank" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">正则表达式</a></div>
+
+  
+    
+<div id="article_content" class="article_content">
+<p>在javascript中对象通常包括两种类型：内置对象和浏览器对象，此外，用户还可以自定义对象。</p>
+<p>对象包含两个要素：1.用来描述对象特性的一组数据，也就是若干<span style="color: #ff6600">变量</span>，通常称为<span style="color: #ff6600">属性</span>。2.用来操作对象特性的若干动作，也就是若干<span style="color: #808000">函数</span>，通常称为<span style="color: #808000">方法</span>。</p>
+<table cellspacing="1" cellpadding="1" width="584" align="center" border="1" style="width: 584px; height: 418px">
+    <caption>浏览器对象</caption>
+    <tbody>
+        <tr>
+            <td>对象</td>
+            <td>含义</td>
+        </tr>
+        <tr>
+            <td>anchor</td>
+            <td>当前文档中设置了name属性的超链接</td>
+        </tr>
+        <tr>
+            <td>applet</td>
+            <td>当前文档中的小程序</td>
+        </tr>
+        <tr>
+            <td>area</td>
+            <td>客户端图形映射中的区域</td>
+        </tr>
+        <tr>
+            <td>button</td>
+            <td>表单中的按钮</td>
+        </tr>
+        <tr>
+            <td>checkbook</td>
+            <td>表单中的复选框</td>
+        </tr>
+        <tr>
+            <td>document</td>
+            <td>当前窗口中的HTML文档</td>
+        </tr>
+        <tr>
+            <td>embed</td>
+            <td>当前窗口中的嵌入对象</td>
+        </tr>
+        <tr>
+            <td>event</td>
+            <td>浏览器中发生的事件</td>
+        </tr>
+        <tr>
+            <td>fileUpload</td>
+            <td>表单中的文件选择框</td>
+        </tr>
+        <tr>
+            <td>form</td>
+            <td>当前文档中的表单</td>
+        </tr>
+        <tr>
+            <td>frame</td>
+            <td>当前窗口中的框架</td>
+        </tr>
+        <tr>
+            <td>hidden</td>
+            <td>表单中隐藏字段</td>
+        </tr>
+        <tr>
+            <td>history</td>
+            <td>
+            <p>浏览器访问过的url历史记录</p>
+            </td>
+        </tr>
+        <tr>
+            <td>image</td>
+            <td>当前文档中的图形文件</td>
+        </tr>
+        <tr>
+            <td>link</td>
+            <td>当前文档中设置了href属性的超链接</td>
+        </tr>
+        <tr>
+            <td>location</td>
+            <td>浏览器当前显示网页的URL</td>
+        </tr>
+        <tr>
+            <td>mimeType</td>
+            <td>浏览器支持的特定MIME类型信息</td>
+        </tr>
+        <tr>
+            <td>navigator</td>
+            <td>当前浏览器</td>
+        </tr>
+        <tr>
+            <td>option</td>
+            <td>表单中选项菜单的选项</td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td>表单中的口令框</td>
+        </tr>
+        <tr>
+            <td>plugin</td>
+            <td>当前浏览器中的插件</td>
+        </tr>
+        <tr>
+            <td>radio</td>
+            <td>表单中的单选框</td>
+        </tr>
+        <tr>
+            <td>reset</td>
+            <td>表单中的重置按钮</td>
+        </tr>
+        <tr>
+            <td>screen</td>
+            <td>用户屏幕</td>
+        </tr>
+        <tr>
+            <td>select</td>
+            <td>表单中的选项菜单</td>
+        </tr>
+        <tr>
+            <td>submit</td>
+            <td>表单中的提交按钮</td>
+        </tr>
+        <tr>
+            <td>text</td>
+            <td>表单中的单行文本框</td>
+        </tr>
+        <tr>
+            <td>textarea</td>
+            <td>表单中的多行文本框</td>
+        </tr>
+        <tr>
+            <td>window</td>
+            <td>浏览器窗口或窗口中的框架</td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p>内置对象</p>
+<p><a name="TOP">1.Array对象</a>;<a href="#2">2.Boolean对象</a>;<a href="#3">3.Date对象</a>;<a href="#4">4.Math对象</a>;<a href="#5">5.Number对象</a>;<a href="#6">6.Object对象</a>;<a href="#7">7.RegExp对象</a>;<a href="#8">8.String对象</a>;<a href="#9">9.Global对象</a>;<a href="#10">10.Function对象</a></p>
+<p><font size="2">1.Array对象也就是数组对象，数组元素不但可以使其他数据类型，而且可以是其他数组或对象</font></p>
+<p>
+</p><table align="center" border="1" style="width: 578px; height: 146px">
+    <tbody>
+        <tr>
+        </tr>
+        <tr>
+            <td>constructor</td>
+            <td>返回对创建此对象的数组函数的引用。</td>
+        </tr>
+        <tr>
+            <td>index</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>input</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>length</td>
+            <td>设置或返回数组中元素的数目。</td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td>concat()</td>
+            <td>连接两个或更多的数组，并返回结果。</td>
+        </tr>
+        <tr>
+            <td>join()</td>
+            <td>把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。</td>
+        </tr>
+        <tr>
+            <td>pop()</td>
+            <td>删除并返回数组的最后一个元素</td>
+        </tr>
+        <tr>
+            <td>push()</td>
+            <td>向数组的末尾添加一个或更多元素，并返回新的长度。</td>
+        </tr>
+        <tr>
+            <td>reverse()</td>
+            <td>颠倒数组中元素的顺序。</td>
+        </tr>
+        <tr>
+            <td>shift()</td>
+            <td>删除并返回数组的第一个元素</td>
+        </tr>
+        <tr>
+            <td>slice()</td>
+            <td>从某个已有的数组返回选定的元素</td>
+        </tr>
+        <tr>
+            <td>sort()</td>
+            <td>对数组的元素进行排序</td>
+        </tr>
+        <tr>
+            <td>splice()</td>
+            <td>删除元素，并向数组添加新元素。</td>
+        </tr>
+        <tr>
+            <td>toSource()</td>
+            <td>返回该对象的源代码。</td>
+        </tr>
+        <tr>
+            <td>toString()</td>
+            <td>把数组转换为字符串，并返回结果。</td>
+        </tr>
+        <tr>
+            <td>toLocaleString()</td>
+            <td>把数组转换为本地数组，并返回结果。</td>
+        </tr>
+        <tr>
+            <td>unshift()</td>
+            <td>向数组的开头添加一个或更多元素，并返回新的长度。</td>
+        </tr>
+        <tr>
+            <td>valueOf()</td>
+            <td>返回数组对象的原始值</td>
+        </tr>
+    </tbody>
+</table>
+<p></p>
+<p>&nbsp;</p>
+<p><a name="2">2.Boolean</a>对象可以将布尔值当做对象访问，将参数变为布尔值。<a href="#TOP">TOP</a></p>
+<table cellspacing="1" cellpadding="1" width="576" align="center" border="1" style="width: 576px; height: 173px">
+    <tbody>
+        <tr>
+            <td><strong>Boolean对象属性</strong></td>
+            <td><strong>描述</strong></td>
+        </tr>
+        <tr>
+            <td>constructor&nbsp;</td>
+            <td>返回对创建此对象的 Boolean 函数的引用</td>
+        </tr>
+        <tr>
+            <td>prototype</td>
+            <td>向对象添加属性和方法</td>
+        </tr>
+        <tr>
+            <td><strong>Boolean对象方法</strong></td>
+            <td><strong>描述</strong></td>
+        </tr>
+        <tr>
+            <td>toSource( )</td>
+            <td>返回该对象的源代码。</td>
+        </tr>
+        <tr>
+            <td>toString( )</td>
+            <td>把逻辑值转换为字符串，并返回结果</td>
+        </tr>
+        <tr>
+            <td>valueOf( )</td>
+            <td>返回 Boolean 对象的原始值。</td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p><a name="3">3.Date 对象用于处理日期和时间。</a><a href="#TOP">TOP</a></p>
+<p>
+</p><table align="center" border="1" style="width: 576px; height: 1082px">
+    <tbody>
+        <tr>
+            <td><font size="2">Date对象属性</font></td>
+            <td><font size="2">描述</font></td>
+        </tr>
+        <tr>
+            <td>constructor</td>
+            <td>返回对创建此对象的 Date 函数的引用。</td>
+        </tr>
+        <tr>
+            <td>prototype</td>
+            <td>使您有能力向对象添加属性和方法。</td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td>Date()</td>
+            <td>返回当日的日期和时间。</td>
+        </tr>
+        <tr>
+            <td>getDate()</td>
+            <td>从 Date 对象返回一个月中的某一天 (1 ~ 31)。</td>
+        </tr>
+        <tr>
+            <td>getDay()</td>
+            <td>从 Date 对象返回一周中的某一天 (0 ~ 6)。</td>
+        </tr>
+        <tr>
+            <td>getMonth()</td>
+            <td>从 Date 对象返回月份 (0 ~ 11)。</td>
+        </tr>
+        <tr>
+            <td>getFullYear()</td>
+            <td>从 Date 对象以四位数字返回年份。</td>
+        </tr>
+        <tr>
+            <td>getYear()</td>
+            <td><span class="deprecated">请使用 getFullYear() 方法代替。</span></td>
+        </tr>
+        <tr>
+            <td>getHours()</td>
+            <td>返回 Date 对象的小时 (0 ~ 23)。</td>
+        </tr>
+        <tr>
+            <td>getMinutes()</td>
+            <td>返回 Date 对象的分钟 (0 ~ 59)。</td>
+        </tr>
+        <tr>
+            <td>getSeconds()</td>
+            <td>返回 Date 对象的秒数 (0 ~ 59)。</td>
+        </tr>
+        <tr>
+            <td>getMilliseconds()</td>
+            <td>返回 Date 对象的毫秒(0 ~ 999)。</td>
+        </tr>
+        <tr>
+            <td>getTime()</td>
+            <td>返回 1970 年 1 月 1 日至今的毫秒数。</td>
+        </tr>
+        <tr>
+            <td>getTimezoneOffset()</td>
+            <td>返回本地时间与格林威治标准时间 (GMT) 的分钟差。</td>
+        </tr>
+        <tr>
+            <td>getUTCDate()</td>
+            <td>根据世界时从 Date 对象返回月中的一天 (1 ~ 31)。</td>
+        </tr>
+        <tr>
+            <td>getUTCDay()</td>
+            <td>根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。</td>
+        </tr>
+        <tr>
+            <td>getUTCMonth()</td>
+            <td>根据世界时从 Date 对象返回月份 (0 ~ 11)。</td>
+        </tr>
+        <tr>
+            <td>getUTCFullYear()</td>
+            <td>根据世界时从 Date 对象返回四位数的年份。</td>
+        </tr>
+        <tr>
+            <td>getUTCHours()</td>
+            <td>根据世界时返回 Date 对象的小时 (0 ~ 23)。</td>
+        </tr>
+        <tr>
+            <td>getUTCMinutes()</td>
+            <td>根据世界时返回 Date 对象的分钟 (0 ~ 59)。</td>
+        </tr>
+        <tr>
+            <td>getUTCSeconds()</td>
+            <td>根据世界时返回 Date 对象的秒钟 (0 ~ 59)。</td>
+        </tr>
+        <tr>
+            <td class="no_wrap">getUTCMilliseconds()</td>
+            <td>根据世界时返回 Date 对象的毫秒(0 ~ 999)。</td>
+        </tr>
+        <tr>
+            <td>parse()</td>
+            <td>返回1970年1月1日午夜到指定日期（字符串）的毫秒数。</td>
+        </tr>
+        <tr>
+            <td>setDate()</td>
+            <td>设置 Date 对象中月的某一天 (1 ~ 31)。</td>
+        </tr>
+        <tr>
+            <td>setMonth()</td>
+            <td>设置 Date 对象中月份 (0 ~ 11)。</td>
+        </tr>
+        <tr>
+            <td>setFullYear()</td>
+            <td>设置 Date 对象中的年份（四位数字）。</td>
+        </tr>
+        <tr>
+            <td>setYear()</td>
+            <td><span class="deprecated">请使用 setFullYear() 方法代替。</span></td>
+        </tr>
+        <tr>
+            <td>setHours()</td>
+            <td>设置 Date 对象中的小时 (0 ~ 23)。</td>
+        </tr>
+        <tr>
+            <td>setMinutes()</td>
+            <td>设置 Date 对象中的分钟 (0 ~ 59)。</td>
+        </tr>
+        <tr>
+            <td>setSeconds()</td>
+            <td>设置 Date 对象中的秒钟 (0 ~ 59)。</td>
+        </tr>
+        <tr>
+            <td>setMilliseconds()</td>
+            <td>设置 Date 对象中的毫秒 (0 ~ 999)。</td>
+        </tr>
+        <tr>
+            <td>setTime()</td>
+            <td>以毫秒设置 Date 对象。</td>
+        </tr>
+        <tr>
+            <td>setUTCDate()</td>
+            <td>根据世界时设置 Date 对象中月份的一天 (1 ~ 31)。</td>
+        </tr>
+        <tr>
+            <td>setUTCMonth()</td>
+            <td>根据世界时设置 Date 对象中的月份 (0 ~ 11)。</td>
+        </tr>
+        <tr>
+            <td>setUTCFullYear()</td>
+            <td>根据世界时设置 Date 对象中的年份（四位数字）。</td>
+        </tr>
+        <tr>
+            <td>setUTCHours()</td>
+            <td>根据世界时设置 Date 对象中的小时 (0 ~ 23)。</td>
+        </tr>
+        <tr>
+            <td>setUTCMinutes()</td>
+            <td>根据世界时设置 Date 对象中的分钟 (0 ~ 59)。</td>
+        </tr>
+        <tr>
+            <td>setUTCSeconds()</td>
+            <td>根据世界时设置 Date 对象中的秒钟 (0 ~ 59)。</td>
+        </tr>
+        <tr>
+            <td>setUTCMilliseconds()</td>
+            <td>根据世界时设置 Date 对象中的毫秒 (0 ~ 999)。</td>
+        </tr>
+        <tr>
+            <td>toSource()</td>
+            <td>返回该对象的源代码。</td>
+        </tr>
+        <tr>
+            <td>toString()</td>
+            <td>把 Date 对象转换为字符串。</td>
+        </tr>
+        <tr>
+            <td>toTimeString()</td>
+            <td>把 Date 对象的时间部分转换为字符串。</td>
+        </tr>
+        <tr>
+            <td>toDateString()</td>
+            <td>把 Date 对象的日期部分转换为字符串。</td>
+        </tr>
+        <tr>
+            <td>toGMTString()</td>
+            <td><span class="deprecated">请使用 toUTCString() 方法代替。</span></td>
+        </tr>
+        <tr>
+            <td>toUTCString()</td>
+            <td>根据世界时，把 Date 对象转换为字符串。</td>
+        </tr>
+        <tr>
+            <td>toLocaleString()</td>
+            <td>根据本地时间格式，把 Date 对象转换为字符串。</td>
+        </tr>
+        <tr>
+            <td>toLocaleTimeString()</td>
+            <td>根据本地时间格式，把 Date 对象的时间部分转换为字符串。</td>
+        </tr>
+        <tr>
+            <td>toLocaleDateString()</td>
+            <td>根据本地时间格式，把 Date 对象的日期部分转换为字符串。</td>
+        </tr>
+        <tr>
+            <td>UTC()</td>
+            <td>根据世界时返回 1997 年 1 月 1 日 到指定日期的毫秒数。</td>
+        </tr>
+        <tr>
+            <td>valueOf()</td>
+            <td>返回 Date 对象的原始值。</td>
+        </tr>
+    </tbody>
+</table>
+<p></p>
+<p><a name="4">4.Math</a>对象用来进行数学计算，Math对象可以在不使用构造函数的情况下是用，并且所有的属性和方法都是静态的。<a href="#TOP">TOP</a></p>
+<table align="center" border="1" style="width: 561px; height: 615px">
+    <tbody>
+        <tr>
+            <td width="30%">E</td>
+            <td width="60%">返回算术常量 e，即自然对数的底数（约等于2.718）。</td>
+            <td width="5%">1</td>
+            <td width="5%">3</td>
+        </tr>
+        <tr>
+            <td>LN2</td>
+            <td>返回 2 的自然对数（约等于0.693）。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>LN10</td>
+            <td>返回 10 的自然对数（约等于2.302）。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>LOG2E</td>
+            <td>返回以 2 为底的 e 的对数（约等于 1.414）。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>LOG10E</td>
+            <td>返回以 10 为底的 e 的对数（约等于0.434）。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>PI</td>
+            <td>返回圆周率（约等于3.14159）。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>SQRT1_2</td>
+            <td>返回返回 2 的平方根的倒数（约等于 0.707）。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>SQRT2</td>
+            <td>返回 2 的平方根（约等于 1.414）。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td>abs(x)</td>
+            <td>返回数的绝对值。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>acos(x)</td>
+            <td>返回数的反余弦值。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>asin(x)</td>
+            <td>返回数的反正弦值。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>atan(x)</td>
+            <td>以介于 -PI/2 与 PI/2 弧度之间的数值来返回 x 的反正切值。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>atan2(y,x)</td>
+            <td>返回从 x 轴到点 (x,y) 的角度（介于 -PI/2 与 PI/2 弧度之间）。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>ceil(x)</td>
+            <td>对数进行上舍入。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>cos(x)</td>
+            <td>返回数的余弦。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>exp(x)</td>
+            <td>返回 e 的指数。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>floor(x)</td>
+            <td>对数进行下舍入。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>log(x)</td>
+            <td>返回数的自然对数（底为e）。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>max(x,y)</td>
+            <td>返回 x 和 y 中的最高值。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>min(x,y)</td>
+            <td>返回 x 和 y 中的最低值。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>pow(x,y)</td>
+            <td>返回 x 的 y 次幂。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>random()</td>
+            <td>返回 0 ~ 1 之间的随机数。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>round(x)</td>
+            <td>把数四舍五入为最接近的整数。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>sin(x)</td>
+            <td>返回数的正弦。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>sqrt(x)</td>
+            <td>返回数的平方根。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>tan(x)</td>
+            <td>返回角的正切。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>toSource()</td>
+            <td>返回该对象的源代码。</td>
+            <td>1</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>valueOf()</td>
+            <td>返回 Math 对象的原始值。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+    </tbody>
+</table>
+<p><a name="5">5.Number</a>对象可以将数字作为对象访问，与Math一样不用创建对象直接使用。<a href="#TOP">TOP</a></p>
+<p>
+</p><table align="center" border="1">
+    <tbody>
+        <tr>
+            <td width="30%">constructor</td>
+            <td width="60%">返回对创建此对象的 Number 函数的引用。</td>
+            <td width="5%">1.0</td>
+            <td width="5%">4.0</td>
+        </tr>
+        <tr>
+            <td>MAX_VALUE</td>
+            <td>可表示的最大的数。</td>
+            <td>1.0</td>
+            <td>4.0</td>
+        </tr>
+        <tr>
+            <td>MIN_VALUE</td>
+            <td>可表示的最小的数。</td>
+            <td>1.0</td>
+            <td>4.0</td>
+        </tr>
+        <tr>
+            <td>NaN</td>
+            <td>非数字值。</td>
+            <td>1.0</td>
+            <td>4.0</td>
+        </tr>
+        <tr>
+            <td>NEGATIVE_INFINITY</td>
+            <td>负无穷大，溢出时返回该值。</td>
+            <td>1.0</td>
+            <td>4.0</td>
+        </tr>
+        <tr>
+            <td>POSITIVE_INFINITY</td>
+            <td>正无穷大，溢出时返回该值。</td>
+            <td>1.0</td>
+            <td>4.0</td>
+        </tr>
+        <tr>
+            <td>prototype</td>
+            <td>使您有能力向对象添加属性和方法。</td>
+            <td>1.0</td>
+            <td>4.0</td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td>toString</td>
+            <td>把数字转换为字符串，使用指定的基数。</td>
+            <td>1.0</td>
+            <td>4.0</td>
+        </tr>
+        <tr>
+            <td>toLocaleString</td>
+            <td>把数字转换为字符串，使用本地数字格式顺序。</td>
+            <td>1.0</td>
+            <td>4.0</td>
+        </tr>
+        <tr>
+            <td>toFixed</td>
+            <td>把数字转换为字符串，结果的小数点后有指定位数的数字。</td>
+            <td>1.0</td>
+            <td>5.5</td>
+        </tr>
+        <tr>
+            <td>toExponential</td>
+            <td>把对象的值转换为指数计数法。</td>
+            <td>1.0</td>
+            <td>5.5</td>
+        </tr>
+        <tr>
+            <td>toPrecision</td>
+            <td>把数字格式化为指定的长度。</td>
+            <td>1.0</td>
+            <td>5.5</td>
+        </tr>
+        <tr>
+            <td>valueOf</td>
+            <td>返回一个 Number 对象的基本数字值。</td>
+            <td>1.0</td>
+            <td>4.0</td>
+        </tr>
+    </tbody>
+</table>
+<p></p>
+<div>&nbsp;</div>
+<p><a name="6">6.Object</a>对象是派生所有其他对象的对象，其属性和方法可以派生给所有其他对象。<a href="#TOP">TOP</a></p>
+<table cellspacing="1" cellpadding="1" width="530" align="center" border="1" style="width: 530px; height: 103px">
+    <tbody>
+        <tr>
+            <td>属性</td>
+            <td>描述</td>
+        </tr>
+        <tr>
+            <td>constructor</td>
+            <td>&nbsp;表示对象的构造函数的名称</td>
+        </tr>
+        <tr>
+            <td>prototype</td>
+            <td>&nbsp;用来为对象添加新的属性和方法</td>
+        </tr>
+        <tr>
+            <td>方法</td>
+            <td>描述</td>
+        </tr>
+        <tr>
+            <td>toString( )</td>
+            <td>&nbsp;将对象转换为用字符串表示</td>
+        </tr>
+        <tr>
+            <td>valueOf( )</td>
+            <td>&nbsp;获得指定对象的原始值</td>
+        </tr>
+    </tbody>
+</table>
+<p><a name="7">7.RegExp</a>对象表示正则表达式，它是对字符串执行模式匹配的强大工具。略...<a href="#TOP">TOP</a></p>
+<p><a name="8">8.String</a>对象用于处理文本（字符串）。<a href="#TOP">TOP</a></p>
+<p>
+</p><table align="center" border="1">
+    <tbody>
+        <tr>
+            <td width="30%">constructor</td>
+            <td width="60%">对创建该对象的函数的引用</td>
+            <td width="5%">1</td>
+            <td width="5%">4</td>
+        </tr>
+        <tr>
+            <td>length</td>
+            <td>字符串的长度</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>prototype</td>
+            <td>允许您向对象添加属性和方法</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td>anchor()</td>
+            <td>创建 HTML 锚。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>big()</td>
+            <td>用大号字体显示字符串。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>blink()</td>
+            <td>显示闪动字符串。</td>
+            <td>1</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>bold()</td>
+            <td>使用粗体显示字符串。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>charAt()</td>
+            <td>返回在指定位置的字符。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>charCodeAt()</td>
+            <td>返回在指定的位置的字符的 Unicode 编码。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>concat()</td>
+            <td>连接字符串。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>fixed()</td>
+            <td>以打字机文本显示字符串。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>fontcolor()</td>
+            <td>使用指定的颜色来显示字符串。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>fontsize()</td>
+            <td>使用指定的尺寸来显示字符串。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td class="no_wrap">fromCharCode()</td>
+            <td>从字符编码创建一个字符串。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>indexOf()</td>
+            <td>检索字符串。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>italics()</td>
+            <td>使用斜体显示字符串。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>lastIndexOf()</td>
+            <td>从后向前搜索字符串。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>link()</td>
+            <td>将字符串显示为链接。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>localeCompare()</td>
+            <td>用本地特定的顺序来比较两个字符串。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>match()</td>
+            <td>找到一个或多个正在表达式的匹配。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>replace()</td>
+            <td>替换与正则表达式匹配的子串。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>search()</td>
+            <td>检索与正则表达式相匹配的值。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>slice()</td>
+            <td>提取字符串的片断，并在新的字符串中返回被提取的部分。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>small()</td>
+            <td>使用小字号来显示字符串。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>split()</td>
+            <td>把字符串分割为字符串数组。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>strike()</td>
+            <td>使用删除线来显示字符串。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>sub()</td>
+            <td>把字符串显示为下标。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>substr()</td>
+            <td>从起始索引号提取字符串中指定数目的字符。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>substring()</td>
+            <td>提取字符串中两个指定的索引号之间的字符。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>sup()</td>
+            <td>把字符串显示为上标。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td class="no_wrap">toLocaleLowerCase()</td>
+            <td>把字符串转换为小写。</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td class="no_wrap">toLocaleUpperCase()</td>
+            <td>把字符串转换为大写。</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>toLowerCase()</td>
+            <td>把字符串转换为小写。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>toUpperCase()</td>
+            <td>把字符串转换为大写。</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>toSource()</td>
+            <td>代表对象的源代码。</td>
+            <td>1</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>toString()</td>
+            <td>返回字符串。</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>valueOf()</td>
+            <td>返回某个字符串对象的原始值。</td>
+            <td>1</td>
+            <td>4</td>
+        </tr>
+    </tbody>
+</table>
+<p></p>
+<div>&nbsp;</div>
+<p><a name="9">9.Global</a>对象定义了JavaScript中的全局变量和函数。略...<a href="#TOP">TOP</a></p>
+<p><a name="10">10.Function</a>对象可以将函数作为对象访问,并可以在脚本执行期间动态生成和调用函数。<a href="#TOP">TOP</a></p>
+<p>
+</p><table cellspacing="1" cellpadding="1" width="526" align="center" border="1" style="width: 526px; height: 143px">
+    <tbody>
+        <tr>
+            <td>属性</td>
+            <td>描述</td>
+        </tr>
+        <tr>
+            <td>arguments</td>
+            <td>&nbsp;表示函数参数的数组</td>
+        </tr>
+        <tr>
+            <td>caller</td>
+            <td>&nbsp;表示调用当前正在执行的函数</td>
+        </tr>
+        <tr>
+            <td>prototypt</td>
+            <td>&nbsp;为对象添加新的属性和方法</td>
+        </tr>
+        <tr>
+            <td>方法</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>apply()</td>
+            <td>用于将一个对象中的方法应用到另一个对象</td>
+        </tr>
+        <tr>
+            <td>call(this);call(this,arg1,arg2...)</td>
+            <td>&nbsp;允许调用另外一个对象的方法&nbsp;</td>
+        </tr>
+        <tr>
+            <td>toString</td>
+            <td>&nbsp;用于将一个对象转换为字符串</td>
+        </tr>
+    </tbody>
+</table>
+<p></p>    
+        <div style="padding-top:20px">         
+            <p style="font-size:12px;">版权声明：本文为博主原创文章，未经博主允许不得转载。</p>
+        </div>
+</div>
+
+
+
+
+<!-- Baidu Button BEGIN -->
+
+
+
+
+<div class="bdsharebuttonbox bdshare-button-style0-16" style="float: right;" data-bd-bind="1437618389409">
+<a href="#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间" style="background-position:0 -52px !important"></a>
+<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" style="background-position:0 -104px !important"></a>
+<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博" style="background-position:0 -260px !important"></a>
+<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网" style="background-position:0 -208px !important"></a>
+<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信" style="background-position:0 -1612px !important"></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+
+   <link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_detail.css">
+
+    
+<!--172.16.140.12-->
+
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1536434" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=399339"></script>
+
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+
+ 
+
+</div>
+</body>
+</html>
